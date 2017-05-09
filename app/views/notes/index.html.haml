@@ -1,0 +1,31 @@
+%header
+  .header-inner-top
+    = link_to root_path do
+      = image_tag 'clonote_logo.svg'
+    .sign-in-buttons
+      = link_to 'ログイン', '/'
+      %span
+        \/
+      = link_to '新規登録', '/'
+  .header-inner-bottom
+    %ul.category-tabs
+      = link_to '/' do
+        %li おすすめ
+      = link_to '/' do
+        %li マンガ
+      = link_to '/' do
+        %li コラム
+      = link_to '/' do
+        %li 小説
+      = link_to '/' do
+        %li 写真
+      = link_to '/' do
+        %li 音楽
+    %ul.trend-hashtags
+      = link_to '/' do
+        %li #test_hash1
+      = link_to '/' do
+        %li #test_hash2
+.container
+%footer
+  %p powered by brainya
