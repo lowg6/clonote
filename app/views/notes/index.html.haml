@@ -1,5 +1,5 @@
-%header
-  .header-inner-top
+.main-header
+  .main-header__inner-top
     = link_to root_path do
       = image_tag 'clonote_logo.svg'
     .sign-in-buttons
@@ -7,7 +7,7 @@
       %span
         \/
       = link_to '新規登録', new_user_registration_path
-  .header-inner-bottom
+  .main-header__inner-bottom
     %ul.category-tabs
       = link_to '/' do
         %li おすすめ
@@ -26,4 +26,4 @@
         %li #test_hash1
       = link_to '/' do
         %li #test_hash2
-.container
+.main-container

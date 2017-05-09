@@ -1,76 +1,69 @@
-header {
+.main-header {
   width: 100%;
   height: 102px;
   color: #007bff;
   font-size: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.header-inner-top {
-  width: 940px;
-  height: 30px;
-  margin: 0 auto;
-  padding: 13px 0;
-  position: relative;
-  align-items: center;
-  display: flex;
-  .sign-in-buttons {
-    position: absolute;
-    top: 20px;
-    right: 65px;
+  background-color: white;
+  &__inner-top {
+    width: 940px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 13px 0;
+    position: relative;
+    align-items: center;
+    display: flex;
+  }
+  &__inner-bottom {
+    width: 940px;
+    height: 45px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(0,0,0,0.05);
   }
 }
 
-.header-inner-bottom {
-  width: 940px;
-  height: 45px;
-  margin: 0 auto;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  .category-tabs {
-    color: #222;
-    font-size: 13px;
+.sign-in-buttons {
+  position: absolute;
+  top: 20px;
+  right: 65px;
+}
+
+.category-tabs {
+  color: #222;
+  font-size: 13px;
+  float: left;
+  li {
+    padding: 15px 13px;
+    list-style: none;
     float: left;
-    li {
-      padding: 15px 13px;
-      list-style: none;
-      float: left;
-      &:hover {
-        border-bottom: 2px solid #222;
-      }
-    }
-  }
-  .trend-hashtags {
-    height: 25px;
-    margin: 10px;
-    padding-left: 20px;
-    float: left;
-    border-left: 1px solid rgba(0,0,0,0.05);
-    color: #898D8C;
-    li {
-      list-style: none;
-      float: left;
-      line-height: 25px;
-      padding: 0 8px;
-      margin-right: 20px;
-      background-color: #F7F9F9;
-      &:hover {
-        background-color: #F2F4F4;
-      }
+    &:hover {
+      border-bottom: 2px solid #222;
     }
   }
 }
 
-.container {
+.trend-hashtags {
+  height: 25px;
+  margin: 10px;
+  padding-left: 20px;
+  float: left;
+  border-left: 1px solid rgba(0,0,0,0.05);
+  color: #898D8C;
+  li {
+    list-style: none;
+    float: left;
+    line-height: 25px;
+    padding: 0 8px;
+    margin-right: 20px;
+    background-color: #F7F9F9;
+    &:hover {
+      background-color: #F2F4F4;
+    }
+  }
+}
+
+.main-container {
   width: 100%;
   height: 100vh;
-  background-color: #F7F9F9;
-}
-
-footer {
-  width: 100%;
-  height: 101px;
-  text-align: center;
-  font-size: 12px;
-  color: #222;
   background-color: #F7F9F9;
 }
