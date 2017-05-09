@@ -1,0 +1,14 @@
+.sign-in-header
+  = image_tag 'clonote_logo.svg'
+.sign-in-container
+  .sign-in-container__title
+    ログイン
+  = form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: 'new-user-form' } do |f|
+    .input-field
+      = f.email_field :email, placeholder: "メールアドレス", autofocus: true
+    .input-field
+      = f.password_field :password, placeholder: "パスワード", autocomplete: "off"
+    .input-actions
+      = f.submit "ログイン"
+  .sign-in-container__footer-links
+    = render "devise/shared/links"
