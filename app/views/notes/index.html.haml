@@ -3,10 +3,10 @@
     = link_to root_path do
       = image_tag 'clonote_logo.svg'
     .sign-in-buttons
-      = link_to 'ログイン', '/'
+      = link_to 'ログイン', new_user_session_path
       %span
         \/
-      = link_to '新規登録', '/'
+      = link_to '新規登録', new_user_registration_path
   .header-inner-bottom
     %ul.category-tabs
       = link_to '/' do
