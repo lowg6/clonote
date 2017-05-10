@@ -1,0 +1,49 @@
+.sign-in-header {
+  height: 120px;
+  line-height: 150px;
+  text-align: center;
+}
+
+.sign-in-container {
+  width: 350px;
+  height: 474px;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
+  &__title {
+    padding: 40px 0;
+    color: #222;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  &__footer-links {
+    width: calc(85% + 10px);
+    padding-top: 15px;
+    margin: 15px auto 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 12px;
+    display: flex;
+    text-indent: 30px;
+    a:link, :visited {
+      color: #007bff;
+    }
+  }
+}
+
+.new-user-form, .sign-in-user-form {
+  .input-field {
+    margin-bottom: 10px;
+  }
+  input[type='email'], input[type='password'] {
+    width: 85%;
+    height: 30px;
+    padding: 0 0 0 10px;
+  }
+  input[type='submit'] {
+    width: calc(85% + 12px);
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+  }
+}

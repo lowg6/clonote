@@ -1,49 +1,91 @@
-.sign-in-header {
-  height: 120px;
-  line-height: 150px;
-  text-align: center;
+.user-header {
+  width: 100%;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  background-color: white;
+  &__inner-top {
+    width: 940px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 13px 0;
+    position: relative;
+    align-items: center;
+    display: flex;
+  }
+  &__inner-max-width-border {
+    border-top: 1px solid rgba(0,0,0,0.05); 
+  }
+  &__inner-center {
+    width: 940px;
+    height: 160px;
+    padding: 13px 0;
+    margin: 0 auto;
+    position: relative;
+    align-items: center;
+    display: flex;
+  }
+  &__inner-bottom {
+    width: 940px;
+    height: 60px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
 }
 
-.sign-in-container {
-  width: 350px;
-  height: 474px;
-  margin: 0 auto;
-  background-color: white;
-  text-align: center;
-  border: 1px solid rgba(0,0,0,0.05);
-  &__title {
-    padding: 40px 0;
-    color: #222;
-    font-size: 22px;
-    font-weight: bold;
-  }
-  &__footer-links {
-    width: calc(85% + 10px);
-    padding-top: 15px;
-    margin: 15px auto 0;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    font-size: 12px;
-    display: flex;
-    text-indent: 30px;
-    a:link, :visited {
-      color: #007bff;
+.new-note-button {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  height: 30px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.user-category-tabs {
+  color: #222;
+  font-size: 13px;
+  float: left;
+  li {
+    padding: 23px;
+    list-style: none;
+    float: left;
+    &:hover {
+      border-bottom: 2px solid #222;
     }
   }
 }
 
-.new-user-form {
-  .input-field {
-    margin-bottom: 10px;
+.user-profile-image {
+  width: 170px;
+  height: 100%;
+  img {
+    width: inherit;
+    height: inherit;
   }
-  input[type='email'], input[type='password'] {
-    width: 85%;
-    height: 30px;
-    padding: 0 0 0 10px;
+}
+
+.user-profile-content {
+  width: 100%;
+  height: 100%;
+  line-height: 55px;
+  &--username {
+    font-size: 22px;
   }
-  input[type='submit'] {
-    width: calc(85% + 12px);
+  &--setting {
+    width: 60px;
+    position: absolute;
+    top: 25px;
+    right: 0;
     height: 30px;
     background-color: #007bff;
     color: white;
+    cursor: pointer;
   }
+}
+
+.user-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #F7F9F9;
 }
