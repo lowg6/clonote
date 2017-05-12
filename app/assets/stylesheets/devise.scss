@@ -1,3 +1,5 @@
+@import 'mixin';
+
 .sign-in-header {
   height: 120px;
   line-height: 150px;
@@ -5,8 +7,7 @@
 }
 
 .sign-in-container {
-  width: 350px;
-  height: 474px;
+  @include wh(350px, 474px);
   margin: 0 auto;
   background-color: white;
   text-align: center;
@@ -19,14 +20,13 @@
   }
   &__footer-links {
     width: calc(85% + 10px);
-    padding-top: 15px;
-    margin: 15px auto 0;
+    @include pm(15px 0 0 0, 15px auto 0);
     border-top: 1px solid rgba(0,0,0,0.05);
     font-size: 12px;
     display: flex;
     text-indent: 30px;
     a:link, :visited {
-      color: #007bff;
+      color: $default-blue;
     }
   }
 }
@@ -36,14 +36,11 @@
     margin-bottom: 10px;
   }
   input[type='email'], input[type='password'] {
-    width: 85%;
-    height: 30px;
+    @include wh(85%, 30px);
     padding: 0 0 0 10px;
   }
   input[type='submit'] {
-    width: calc(85% + 12px);
-    height: 30px;
-    background-color: #007bff;
-    color: white;
+    @include wh(calc(85% + 12px), 30px);
+    @include color($default-blue, white);
   }
 }

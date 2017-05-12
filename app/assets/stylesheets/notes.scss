@@ -1,31 +1,27 @@
+@import 'mixin';
+
 .main-header {
-  width: 100%;
-  height: 102px;
+  @include wh(100%, 102px);
   font-size: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   background-color: white;
   &__inner-top {
-    width: 940px;
-    height: 30px;
-    margin: 0 auto;
-    padding: 13px 0;
+    @include wh(940px, 30px);
+    @include pm(13px 0, 0 auto);
     position: relative;
     align-items: center;
     display: flex;
-    color: #007bff;
+    color: $default-blue;
   }
   &__inner-bottom {
-    width: 940px;
-    height: 45px;
+    @include wh(940px, 45px);
     margin: 0 auto;
     border-top: 1px solid rgba(0,0,0,0.05);
   }
 }
 
 .sign-in-buttons {
-  position: absolute;
-  top: 20px;
-  right: 65px;
+  @include pos(absolute, 20px, 65px, auto, auto);
 }
 
 .category-tabs {
@@ -33,6 +29,7 @@
   font-size: 13px;
   float: left;
   li {
+    @include pm(15px 13px, 0);
     padding: 15px 13px;
     list-style: none;
     float: left;
@@ -43,18 +40,16 @@
 }
 
 .trend-hashtags {
+  @include pm(0 0 0 20px, 10px);
   height: 25px;
-  margin: 10px;
-  padding-left: 20px;
   float: left;
   border-left: 1px solid rgba(0,0,0,0.05);
   color: #898D8C;
   li {
+    @include pm(0 8px, 0 20px 0 0);
     list-style: none;
     float: left;
     line-height: 25px;
-    padding: 0 8px;
-    margin-right: 20px;
     background-color: #F7F9F9;
     &:hover {
       background-color: #F2F4F4;
@@ -63,7 +58,6 @@
 }
 
 .main-container {
-  width: 100%;
-  height: 100vh;
+  @include wh(100%, 100vh);
   background-color: #F7F9F9;
 }

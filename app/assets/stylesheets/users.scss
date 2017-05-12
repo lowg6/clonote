@@ -1,13 +1,13 @@
+@import 'mixin';
+
 .user-header {
   width: 100%;
   font-size: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   background-color: white;
   &__inner-top {
-    width: 940px;
-    height: 30px;
-    margin: 0 auto;
-    padding: 13px 0;
+    @include wh(940px, 30px);
+    @include pm(13px 0, 0 auto);
     position: relative;
     align-items: center;
     display: flex;
@@ -16,30 +16,17 @@
     border-top: 1px solid rgba(0,0,0,0.05); 
   }
   &__inner-center {
-    width: 940px;
-    height: 160px;
-    padding: 13px 0;
-    margin: 0 auto;
+    @include wh(940px, 160px);
+    @include pm(13px 0, 0 auto);
     position: relative;
     align-items: center;
     display: flex;
   }
   &__inner-bottom {
-    width: 940px;
-    height: 60px;
+    @include wh(940px, 60px);
     margin: 0 auto;
     border-top: 1px solid rgba(0,0,0,0.05);
   }
-}
-
-.new-note-button {
-  position: absolute;
-  top: 12px;
-  right: 0;
-  height: 30px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
 }
 
 .user-category-tabs {
@@ -57,35 +44,67 @@
 }
 
 .user-profile-image {
-  width: 170px;
-  height: 100%;
+  @include wh(170px, 100%);
+  padding: 30px;
   img {
-    width: inherit;
-    height: inherit;
+    @include wh(inherit, inherit);
   }
 }
 
 .user-profile-content {
-  width: 100%;
-  height: 100%;
+  @include wh(100%, 100%);
   line-height: 55px;
   &--username {
     font-size: 22px;
   }
-  &--setting {
-    width: 60px;
-    position: absolute;
-    top: 25px;
-    right: 0;
-    height: 30px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+  &--description {
+    line-height: normal;
   }
 }
 
 .user-container {
-  width: 100%;
-  height: 100vh;
+  @include wh(100%, 100vh);
   background-color: #F7F9F9;
+}
+
+.new-note-button {
+  @include pos(absolute, 12px, 0, auto, auto);
+  @include color($default-blue, white);
+  height: 30px;
+  cursor: pointer;
+}
+
+.setting-button {
+  @include pos(absolute, 24px, 0, auto, auto);
+  @include color($default-blue, white);
+  height: 30px;
+  cursor: pointer;
+}
+
+.follow-button {
+  @extend .setting-button;
+  @include color(white, $default-blue);
+  border: 1px solid $default-blue !important;
+}
+
+.unfollow-button {
+  @extend .setting-button;
+}
+
+.follow-stats {
+  a {
+    color: #898D8C;
+    &:hover span {
+      color: $default-blue;
+    }
+  }
+  span {
+    color: #222;
+    font-weight: bold;
+  }
+}
+
+.follow_form {
+  width: 100px;
+  height: 100px;
 }
