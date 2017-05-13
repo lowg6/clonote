@@ -3,7 +3,15 @@ $(document).on('turbolinks:load', function() {
     var url = $(this).data('url');
     
     $.get(url, function(data) {
-      var html = $(data).filter('.follower-list').html();
+      var filter_class = '';
+
+      if (url.match('/followers')) {
+        filter_class ='.follower-list'
+      } else if (url.match('/following')) {
+        filter_class= '.following-list'
+      }
+
+      var html = $(data).filter(filter_class).html();
       $('#modal').html(html);
       $('#modal').remodal().open();;
     });
