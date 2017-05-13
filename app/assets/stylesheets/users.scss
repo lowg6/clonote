@@ -92,19 +92,15 @@
 }
 
 .follow-stats {
-  a {
+  span {
     color: #898D8C;
-    &:hover span {
+    cursor: pointer;
+    a {
+      color: #222;
+      font-weight: bold;
+    }
+    &:hover a {
       color: $default-blue;
     }
   }
-  span {
-    color: #222;
-    font-weight: bold;
-  }
-}
-
-.follow_form {
-  width: 100px;
-  height: 100px;
 }
