@@ -6,10 +6,11 @@
       %button.new-note-button
         ノートを投稿
   .user-header__inner-max-width-border
+  - if @user.header_image.url
+    .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
   .user-header__inner-center
-    .user-profile-image
-      - if @user.image
-        = image_tag @user.image
+    - if @user.image.url
+      .user-profile-image{ style: "background-image: url('#{@user.image}')" }
     .user-profile-content
       %span.user-profile-content--username
         = @user.nickname
