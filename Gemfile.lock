@@ -82,6 +82,10 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.2)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
