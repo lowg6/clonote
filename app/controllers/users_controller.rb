@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.update(profile_params)
+    redirect_to user_path
   end
 
   def following
@@ -17,6 +25,10 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(noteid: params[:noteid])
+  end
+
+  def profile_params
+    params.require(:user).permit(:header_image, :image, :nickname, :description)
   end
 end

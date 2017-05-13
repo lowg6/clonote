@@ -1,2 +1,2 @@
-= form_for current_user.following?(@user), html: { method: :delete } do |f|
+= form_for current_user.following?(@user), method: :delete do |f|
   = f.submit "フォローをはずす", class: 'unfollow-button'

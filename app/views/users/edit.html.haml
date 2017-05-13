@@ -1,0 +1,29 @@
+= form_for @user, url: "/#{@user.noteid}", method: :patch do |f|
+  %label.user-edit-header
+    = f.file_field :header_image, style: "display: none;"
+    .user-edit-header__image-overlay
+      - if @user.header_image.url
+        .user-edit-header__image-exists{ style: "background-image: url('#{@user.header_image}')" }
+          .fa.fa-camera.fa-2x
+            %p
+              ヘッダー画像を変更
+      - else
+        .user-edit-header__image-not-exists
+          .fa.fa-camera.fa-2x
+            %p
+              ヘッダー画像を追加
+  .user-edit-container
+    %label.user-edit-container__image-overlay
+      = f.file_field :image, style: "display: none;"
+      .user-edit-container__image{ style: "background-image: url('#{@user.image}')" }
+        .fa.fa-camera.fa-2x
+    .user-edit-container__inner
+      .user-edit-container__nickname
+        = f.text_field :nickname, placeholder: 'ニックネーム'
+      .user-edit-container__description
+        = f.text_area :description, placeholder: 'あなたの自己紹介を書きましょう。(140字以内)', maxLength: '140'
+      .user-edit-container__buttons
+        = link_to user_path do
+          %button
+            キャンセル
+        = f.submit '保存'
