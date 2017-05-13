@@ -11,13 +11,11 @@
       = image_tag 'https://cdn1.iconfinder.com/data/icons/mini-solid-icons-vol-1/16/15-512.png'
     .user-profile-content
       %span.user-profile-content--username
-        テストユーザー
-      %br
-      %span.user-profile-content--follow
-        0 フォロー　 0 フォロワー
-      = link_to '/' do
-        %button.user-profile-content--setting
-          設定
+        = @user.nickname
+      %p.user-profile-content--description
+        = @user.description
+      = render 'follow_stats'
+      = render 'follow_form'
   .user-header__inner-bottom
     %ul.user-category-tabs
       = link_to '/' do
