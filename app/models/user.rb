@@ -10,10 +10,6 @@ class User < ApplicationRecord
   mount_uploader :header_image, ImageUploader
   mount_uploader :image, ImageUploader
 
-  def current_user?(user)
-     user == current_user
-  end
-
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
