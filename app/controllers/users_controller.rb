@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
 
   def show
   end
 
   def edit
+  end
+
+  def update
+    @user.update(profile_params)
+    redirect_to user_path
   end
 
   def following
