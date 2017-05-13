@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require remodal-default-theme
+ *= require remodal
  */
+ 
+ #modal {
+   width: auto;
+ }
