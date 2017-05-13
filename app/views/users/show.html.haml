@@ -16,7 +16,12 @@
       %p.user-profile-content--description
         = @user.description
       = render 'follow_stats'
-      = render 'follow_form'
+      - if current_user?(@user)
+        = link_to edit_user_path do
+          %button.setting-button
+            設定
+      - else
+        = render 'follow_form'
   .user-header__inner-bottom
     %ul.user-category-tabs
       = link_to '/' do
