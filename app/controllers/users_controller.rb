@@ -27,4 +27,8 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(noteid: params[:noteid])
   end
+
+  def profile_params
+    params.require(:user).permit(:header_image, :image, :nickname, :description)
+  end
 end
