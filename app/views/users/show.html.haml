@@ -8,7 +8,8 @@
   .user-header__inner-max-width-border
   .user-header__inner-center
     .user-profile-image
-      = image_tag 'https://cdn1.iconfinder.com/data/icons/mini-solid-icons-vol-1/16/15-512.png'
+      - if @user.image
+        = image_tag @user.image
     .user-profile-content
       %span.user-profile-content--username
         = @user.nickname

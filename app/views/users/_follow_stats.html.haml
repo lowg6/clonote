@@ -1,11 +1,11 @@
 %span.follow-stats
-  %span{ data: { url: following_user_path(@user) } }
+  %span{ data: { url: following_user_path(@user.noteid) } }
     %a
       = @user.followings.count
     フォロー
   %span
     &nbsp;
-  %span{ data: { url: followers_user_path(@user) } }
+  %span{ data: { url: followers_user_path(@user.noteid) } }
     %a
       = @user.followers.count
     フォロワー

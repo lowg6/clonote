@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :following, :followers]
 
   def show
+  end
+
+  def edit
   end
 
   def following
@@ -17,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(noteid: params[:noteid])
   end
 end
