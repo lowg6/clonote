@@ -1,0 +1,6 @@
+%ul.follower-list
+  - @user.followers.each do |user|
+    %li.follower-list__item
+      = link_to user_path(user) do
+        %span.nickname
+          = user.nickname

@@ -1,0 +1,9 @@
+- if @user == current_user
+  = link_to '/' do
+    %button.setting-button
+      設定
+- else
+  - if current_user.following?(@user)
+    = render 'unfollow'
+  - else
+    = render 'follow'
