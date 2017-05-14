@@ -2,6 +2,7 @@ class Note < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true
   belongs_to :user
+  mount_uploader :header_image, ImageUploader
 
   def last(limit)
     user.notes.order('created_at DESC').limit(limit)
