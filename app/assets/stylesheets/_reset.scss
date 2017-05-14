@@ -78,6 +78,11 @@
     border: 1px solid #E8ECEB;
     padding: 5px;
   }
+  #modal, .remodal {
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
 
 @include meyer-reset;
