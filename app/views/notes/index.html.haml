@@ -10,6 +10,9 @@
         %span
           \/
         = link_to '新規登録', new_user_registration_path
+    = link_to new_note_path do
+      %button.new-note-button
+        ノートを投稿
   .main-header__inner-bottom
     %ul.category-tabs
       = link_to '/' do
@@ -30,3 +33,4 @@
       = link_to '/' do
         %li #test_hash2
 .main-container
+= render 'layouts/footer'

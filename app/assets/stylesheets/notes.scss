@@ -1,7 +1,7 @@
 @import 'mixin';
 
 .main-header {
-  @include wh(100%, 102px);
+  @include wh(100%, auto);
   font-size: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   background-color: white;
@@ -52,7 +52,7 @@
     line-height: 25px;
     background-color: #F7F9F9;
     &:hover {
-      background-color: #F2F4F4;
+      background-color: #F7F9F9;
     }
   }
 }
@@ -60,4 +60,243 @@
 .main-container {
   @include wh(100%, 100vh);
   background-color: #F7F9F9;
+}
+
+.note-header {
+  @include wh(100%, 48px);
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  background-color: white;
+  text-align: center;
+  &__logo {
+    line-height: 60px;
+  }
+  &__buttons {
+    @include pos(absolute, 6px, 15px, auto, auto);
+    input, button {
+      @include color(white, #222);
+      height: 35px;
+      border: 1px solid #D9D9D9;
+    }
+  }
+}
+
+.note-container-wrapper{
+  @include wh(auto, calc(100vh - 58px));
+  background-color: white;
+}
+
+.note-container {
+  @include wh(620px, auto);
+  margin: 0 auto;
+  padding-top: 10px;
+  &__image-overlay {
+    height: 100px;
+    margin-top: 10px;
+    line-height: 115px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__header-image {
+    @include wh(630px, auto);
+    opacity: .8;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+  }
+  &__title {
+    margin-top: 10px;
+    input {
+      @include wh(100%, 30px);
+      resize: none;
+      font-size: 25px;
+    }
+  }
+  &__body {
+    margin-top: 10px;
+    textarea {
+      @include wh(100%, 500px);
+      resize: none;
+      font-size: 15px;
+    }
+  }
+}
+
+.note-public-setting-wrapper {
+  display: none;
+}
+
+.note-public-setting {
+  width: 480px;
+}
+
+.note-public-setting-header {
+  @include wh(auto, 50px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 20px;
+  line-height: 48px;
+  background-color: #f8f9fa;
+}
+
+.note-public-setting-container {
+  font-size: 12px;
+  &__sale-setting {
+    text-align: initial;
+    padding: 20px 30px;
+  }
+  #price-field {
+    @include pos(absolute, 70px, 205px, auto, auto);
+  }
+}
+
+.note-public-setting-footer {
+  @include wh(auto, 50px);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  background-color: #f8f9fa;
+  font-size: 12px;
+  &__buttons {
+    line-height: 45px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    align-items: center;
+    span {
+      cursor: pointer;
+    }
+    input {
+      @include color($default-blue, white);
+      height: 30px;
+      padding: 0 38px;
+      line-height: 0;
+    }
+  }
+}
+
+.note-show-container {
+  @include wh(100%, 100%);
+  background-color: white;
+  &__header-image {
+    @include wh(100%, 200px);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 40px;
+  }
+  &__user-name {
+    @include wh(100%, 50px);
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+  }
+  &__profile-image {
+    @include wh(40px, 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 40px;
+    margin: 5px;
+  }
+  &__profile {
+    padding: 7px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__setting-button {
+    @include pos(absolute, 9px, 12px, auto, auto);
+    @include color(white, $default-blue);
+    height: 30px;
+    border: 1px solid $default-blue;
+  }
+  &__title {
+    @include wh(100%, 50px);
+    margin-bottom: 1.1em;
+    font-size: 25px;
+  }
+  &__body {
+    @include wh(100%, auto);
+    margin-bottom: 50px;
+  }
+  &__action {
+    @include wh(100%, 30px);
+    margin-bottom: 30px;
+  }
+  &__popular {
+    @include wh(100%, 60px);
+    padding: 15px 0 45px;
+    border-top: 1px solid #e1e5e7;
+    border-bottom: 1px solid #e1e5e7;
+    line-height: 20px;
+    li {
+      font-size: 12px;
+      list-style-type: initial;
+    }
+    p {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  }
+  &__pager {
+    @include wh(100%, 30px);
+    padding: 15px 0;
+    border-bottom: 1px solid #e1e5e7;
+    line-height: initial;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+  }
+  &__pager-prev {
+    @include wh(310px, auto);
+    border-right: 1px solid #e1e5e7;
+  }
+  &__pager-next {
+    @include wh(310px, auto);
+    text-align: right;
+  }
+  &__pager-next-noprev {
+    @include pos(absolute, auto, 0, auto, auto);
+    @include wh(310px, auto);
+    border-left: 1px solid #e1e5e7;
+    text-align: right;
+  }
+  &__info {
+    @include wh(100%, auto);
+    position: relative;
+    padding: 20px 0;
+  }
+  &__info-profile-wrapper {
+  }
+  &__info-profile-image {
+    @include wh(100px, 100px);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__info-container {
+    @include pos(absolute, 30px, auto, auto, 125px);
+  }
+  &__info-user-name {
+    margin-bottom: 10px;
+  }
+  &__info-description {
+    @include pos(absolute, auto, auto, auto, auto);
+    @include wh(190px, auto);
+    overflow: hidden;
+    font-size: 12px;
+  }
+  &__info-follow-button {
+    @include pos(absolute, 65px, 5px, auto, auto);
+  }
+  &__comment {
+    @include wh(100%, auto);
+    margin-bottom: 30px
+  }
+}
+
+.note-show-container-wrapper {
+  @include wh(620px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
 }

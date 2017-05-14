@@ -6,14 +6,14 @@ $(document).on('turbolinks:load', function() {
       var filter_class = '';
 
       if (url.match('/followers')) {
-        filter_class ='.follower-list'
+        filter_class = '.follower-list';
       } else if (url.match('/following')) {
-        filter_class= '.following-list'
+        filter_class = '.following-list';
       }
 
       var html = $(data).filter(filter_class).html();
       $('#modal').html(html);
-      $('#modal').remodal().open();;
+      $('#modal').remodal().open();
     });
   });
 
