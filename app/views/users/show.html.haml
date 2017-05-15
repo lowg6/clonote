@@ -1,10 +1,5 @@
 .user-header
-  .user-header__inner-top
-    = link_to root_path do
-      = image_tag 'clonote_logo.svg'
-    = link_to new_note_path do
-      %button.new-note-button
-        ノートを投稿
+  = render 'notes/main_header'
   .user-header__inner-max-width-border
   - if @user.header_image.url
     .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
