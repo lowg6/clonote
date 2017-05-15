@@ -11,17 +11,59 @@
     position: relative;
     align-items: center;
     display: flex;
-    color: $default-blue;
   }
   &__inner-bottom {
     @include wh(940px, 45px);
     margin: 0 auto;
     border-top: 1px solid rgba(0,0,0,0.05);
   }
+  &__sign-in-buttons {
+    @include pos(absolute, 20px, 125px, auto, auto);
+    color: $default-blue;
+  }
+  &__current-user-image {
+    @include wh(30px, 30px);
+    @include pos(absolute, 7px, 125px, auto, auto);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    border: 1px solid #F7F9F9;
+    border-radius: 30px;
+    margin: 5px;
+    cursor: pointer;
+  }
 }
 
-.sign-in-buttons {
-  @include pos(absolute, 20px, 65px, auto, auto);
+.user-tooltip {
+  @include wh(200px, auto);
+  @include pos(absolute, 38px, 0, auto, auto);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 1;
+  &__mypage {
+    padding: 15px 20px;
+    font-size: 11px;
+    line-height: 18px;
+    &:hover {
+      color: $default-blue;
+    }
+  }
+  &__separator {
+    height: 2px;
+    border-top: 1px solid #F7F9F9;
+  }
+  ul {
+    font-size: 12px;
+    padding: 10px 20px;
+    line-height: 30px;
+    li {
+      &:hover {
+        color: $default-blue;
+      }
+    }
+  }
 }
 
 .category-tabs {
@@ -60,6 +102,78 @@
 .main-container {
   @include wh(100%, 100vh);
   background-color: #F7F9F9;
+}
+
+.draft-container {
+  height: 100%;
+  background-color: #F7F9F9;
+  &__draft {
+    @include pm(0 20px, 20px 0);
+    background-color: white;
+    border: 1px solid #E8ECEB;
+  }
+  &__header-image {
+    @include wh(100%, 200px);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    margin: 20px 0;
+  }
+  &__user-name {
+    @include wh(100%, auto);
+    margin: 20px 10px;
+    position: relative;
+    display: flex;
+  }
+  &__profile-image {
+    @include wh(40px, 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 40px;
+    margin: 5px;
+  }
+  &__profile {
+    padding: 7px;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  &__title {
+    @include wh(100%, 50px);
+    margin-bottom: 1.1em;
+    font-size: 25px;
+  }
+  &__body {
+    @include wh(100%, auto);
+    margin-bottom: 50px;
+  }
+  &__action {
+    @include wh(100%, 30px);
+    margin-bottom: 20px;
+    border-top: 1px solid #D9D9D9;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 45px;
+    font-size: 12px;
+    p {
+      color: $default-blue;
+    }
+  }
+  &__draft-label {
+    @include pos(absolute, 9px, 12px, auto, auto);
+    @include color(white, $default-blue);
+    padding: 5px 10px;
+    border: 1px solid $default-blue;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: default;
+  }
+}
+
+.draft-container-wrapper {
+  @include wh(580px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
 }
 
 .note-header {

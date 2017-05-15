@@ -1,10 +1,4 @@
-.main-header
-  .main-header__inner-top
-    = link_to root_path do
-      = image_tag 'clonote_logo.svg'
-    = link_to new_note_path do
-      %button.new-note-button
-        ノートを投稿
+= render 'main_header'
 - if @note.is_draft && current_user?(@user)
   = render 'show_draft'
 - else
@@ -68,8 +62,8 @@
               = link_to @user.nickname, user_path(@user.noteid)
             .note-show-container__info-description
               = @user.description.truncate(100)
-            - unless current_user?(@user)
-              .note-show-container__info-follow-button
-                = render 'users/follow', user: @user
+            - if user_signed_in?
+              - unless current_user?(@user)
+                .note-show-container__info-follow-button
+                  = render 'users/follow', user: @user
       .note-show-container__comment
-      

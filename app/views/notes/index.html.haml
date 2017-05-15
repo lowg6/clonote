@@ -1,18 +1,4 @@
-.main-header
-  .main-header__inner-top
-    = link_to root_path do
-      = image_tag 'clonote_logo.svg'
-    .sign-in-buttons
-      - if user_signed_in?
-        = link_to 'ログアウト', destroy_user_session_path
-      - else
-        = link_to 'ログイン', new_user_session_path
-        %span
-          \/
-        = link_to '新規登録', new_user_registration_path
-    = link_to new_note_path do
-      %button.new-note-button
-        ノートを投稿
+= render 'main_header' do
   .main-header__inner-bottom
     %ul.category-tabs
       = link_to '/' do

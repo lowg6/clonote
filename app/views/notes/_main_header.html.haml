@@ -1,0 +1,38 @@
+.main-header
+  .main-header__inner-top
+    = link_to root_path do
+      = image_tag 'clonote_logo.svg'
+    .main-header__sign-in-buttons
+      - unless user_signed_in?
+        = link_to 'ログイン', new_user_session_path
+        %span
+          \/
+        = link_to '新規登録', new_user_registration_path
+    - if user_signed_in? && current_user.image.url
+      .main-header__current-user-image{ style: "background-image: url('#{current_user.image}')" }
+        .user-tooltip
+          = link_to user_path(current_user.noteid) do
+            .user-tooltip__mypage
+              %p{ style: 'font-weight: bold;'}
+                = current_user.nickname
+              %p{ style: 'color: #aaa;'}
+                マイページを表示
+          .user-tooltip__separator
+          %ul.user-tooltip__container
+            = link_to '/' do
+              %li
+                マガジン
+            = link_to '/' do
+              %li
+                ライブラリ
+            = link_to drafts_path do
+              %li
+                下書き
+          .user-tooltip__separator
+          %ul.user-tooltip__user-container
+            = link_to destroy_user_session_path do
+              %li
+                ログアウト
+    = link_to new_note_path do
+      %button.new-note-button
+        ノートを投稿

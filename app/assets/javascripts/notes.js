@@ -1,4 +1,12 @@
 $(document).on('turbolinks:load', function() {
+  $('.main-header__current-user-image').on('click', function() {
+    if ($('.user-tooltip').css('display') == 'none') {
+      $('.user-tooltip').css('display', 'block');
+    } else {
+      $('.user-tooltip').css('display', 'none');
+    }
+  });
+  
   $('#public-setting-button').on('click', function() {
     $('.note-public-setting-wrapper').remodal().open();
     $('.remodal-wrapper').appendTo('#new_note, .edit_note');
