@@ -1,4 +1,5 @@
-= render 'main_header'
+.main-header
+  = render 'main_header'
 - if @note.is_draft && current_user?(@user)
   = render 'show_draft'
 - else

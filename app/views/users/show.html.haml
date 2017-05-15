@@ -1,5 +1,6 @@
 .user-header
-  = render 'notes/main_header'
+  .main-header
+    = render 'notes/main_header'
   .user-header__inner-max-width-border
   - if @user.header_image.url
     .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
