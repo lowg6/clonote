@@ -35,7 +35,7 @@
       %p
         こちらもおすすめ
       %ul
-        - @note.last(3).each do |note|
+        - @note.published.last(3).each do |note|
           %li
             = link_to note.title, note
     .note-show-container__pager

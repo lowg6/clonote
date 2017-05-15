@@ -9,11 +9,15 @@ class Note < ApplicationRecord
   end
 
   def prev
-    user.notes.where('id < ?', self.id).order('id DESC').first
+    user.notes.where('(is_draft = false) AND (id < ?)', self.id).order('id DESC').first
   end
  
   def next
-    user.notes.where('id > ?', self.id).order('id ASC').first
+    user.notes.where('(is_draft = false) AND (id > ?)', self.id).order('id ASC').first
+  end
+
+  def published
+    user.notes.where(is_draft: false)
   end
 
   def created_at_jp
