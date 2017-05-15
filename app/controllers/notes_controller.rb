@@ -6,6 +6,8 @@ class NotesController < ApplicationController
   end
 
   def show
+    redirect_to root_path if @note.is_draft
+    
     @user = @note.user
   end
 
