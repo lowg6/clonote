@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   $('#public-setting-button').on('click', function() {
     $('.note-public-setting-wrapper').remodal().open();
-    $('.remodal-wrapper').appendTo('#new_note');
+    $('.remodal-wrapper').appendTo('#new_note, .edit_note');
   });
 
   $('input[type="file"]').on('change', function(e) {
