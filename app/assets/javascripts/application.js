@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require remodal
 //= require turbolinks
 //= require_tree .
