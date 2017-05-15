@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
   has_many :favorites
-  has_many :notes, through: :favorites
+  has_many :favorite_notes, through: :favorites, source: :note
   has_many :notes
   has_many :comments
   mount_uploader :header_image, ImageUploader
@@ -29,5 +29,17 @@ class User < ApplicationRecord
 
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def favorite?(note)
+    favorites.find_by(note_id: note.id)
+  end
+
+  def favorite!(note)
+    favorites.create!(note_id: note.id)
+  end
+
+  def unfavorite!(note)
+    favorites.find_by(note_id: note.id).destroy
   end
 end
