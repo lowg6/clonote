@@ -26,7 +26,12 @@
       .note-show-container__title
         = @note.title
       .note-show-container__body
-        = @note.body
+        = raw(@note.body.gsub(/\n/, '<br>'))
+      %ul.note-show-container__hashtags
+        - @note.tag_list.each do |tag|
+          = link_to "/hashtag/#{tag}" do
+            %li
+              = "##{tag}"
       .note-show-container__action{ style: "#{current_user.favorite?(@note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
         = render 'favorites/favorite_button', note: @note
         = @note.favorites.count

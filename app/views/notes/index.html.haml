@@ -15,9 +15,9 @@
       = link_to '/' do
         %li 音楽
     %ul.trend-hashtags
-      = link_to '/' do
-        %li #test_hash1
-      = link_to '/' do
-        %li #test_hash2
+      - @tags.most_used(5).each do |tag|
+        = link_to "/hashtag/#{tag}" do
+          %li
+            = "##{tag}"
 .main-container
 = render 'layouts/footer'
