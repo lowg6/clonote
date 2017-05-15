@@ -1,0 +1,29 @@
+= render 'main_header'
+.draft-container
+  .draft-container-wrapper
+    - @notes.each do |note|
+      .draft-container__draft
+        - if note.header_image.url
+          = link_to note_path(note) do
+            .draft-container__header-image{ style: "background-image: url('#{note.header_image}')" }
+        .draft-container__user-name
+          - if current_user.image.url
+            = link_to user_path(current_user.noteid) do
+              .draft-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+          .draft-container__profile
+            %p{ style: 'font-weight: bold;' }
+              = link_to current_user.nickname, user_path(current_user.noteid)
+            %p{ style: 'color: #a1a6a9; font-size: 9px;' }
+              = note.created_at_jp
+          .draft-container__draft-label
+            下書き
+        .draft-container__title
+          = link_to note_path(note) do
+            = note.title
+        .draft-container__body
+          = note.body
+        .draft-container__action
+          = link_to '/' do
+            %p
+              コメントする
+= render 'layouts/footer'
