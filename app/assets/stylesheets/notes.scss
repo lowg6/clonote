@@ -72,7 +72,7 @@
   float: left;
   li {
     @include pm(15px 13px, 0);
-    padding: 15px 13px;
+    padding: 15px 20px;
     list-style: none;
     float: left;
     &:hover {
@@ -88,13 +88,14 @@
   border-left: 1px solid rgba(0,0,0,0.05);
   color: #898D8C;
   li {
-    @include pm(0 8px, 0 20px 0 0);
+    @include pm(3px 12px, 0 20px 0 0);
     list-style: none;
     float: left;
-    line-height: 25px;
+    line-height: 20px;
     background-color: #F7F9F9;
+    border-radius: 5px;
     &:hover {
-      background-color: #F7F9F9;
+      background-color: #EAECEC;
     }
   }
 }
@@ -146,6 +147,7 @@
   &__body {
     @include wh(100%, auto);
     margin-bottom: 50px;
+    word-break: break-all;
   }
   &__action {
     @include wh(100%, 30px);
@@ -170,6 +172,78 @@
 }
 
 .draft-container-wrapper {
+  @include wh(580px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.hashtag-container {
+  height: 100%;
+  background-color: #F7F9F9;
+  &__name {
+    font-size: 30px;
+  }
+  &__content {
+    @include pm(0 20px, 20px 0);
+    background-color: white;
+    border: 1px solid #E8ECEB;
+  }
+  &__header-image {
+    @include wh(100%, 200px);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    margin: 20px 0;
+  }
+  &__user-name {
+    @include wh(100%, auto);
+    margin: 20px 10px;
+    position: relative;
+    display: flex;
+  }
+  &__profile-image {
+    @include wh(40px, 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 40px;
+    margin: 5px;
+  }
+  &__profile {
+    padding: 7px;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  &__title {
+    @include wh(100%, 50px);
+    margin-bottom: 1.1em;
+    font-size: 25px;
+  }
+  &__body {
+    @include wh(100%, auto);
+    margin-bottom: 50px;
+    word-break: break-all;
+  }
+  &__action {
+    @include wh(100%, 30px);
+    margin-bottom: 20px;
+    border-top: 1px solid #D9D9D9;
+    display: flex;
+    line-height: 45px;
+    font-size: 12px;
+    justify-content: space-between;
+  }
+  &__favorite-action {
+    :hover {
+      color: #EDC500;
+    }
+  }
+  &__comment-action {
+    color: $default-blue;
+  }
+}
+
+.hashtag-container-wrapper {
   @include wh(580px, auto);
   margin: 0 auto;
   padding-top: 20px;
@@ -258,8 +332,55 @@
     text-align: initial;
     padding: 20px 30px;
   }
+  &__detail-setting {
+    @include pm(10px, 0 auto 20px);
+    border: 1px solid #e1e5e7;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    width: 400px;
+  }
   #price-field {
     @include pos(absolute, 70px, 205px, auto, auto);
+  }
+}
+
+.detail-setting {
+  &__header {
+    padding: 0 0 12px;
+    margin-left: 10px;
+    text-align: left;
+  }
+  &__container {
+    border-top: 1px solid #e1e5e7;
+  }
+  &__hashtag-content {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    p {
+      width: 100px;
+      margin: 0 10px 0 5px;
+    }
+    #note-tags {
+      width: 100%;
+      background-color: white;
+    }
+  }
+  &__magazine-content {
+    display: flex;
+    align-items: center;
+    p {
+      width: 100px;
+      margin: 0 7px 0 5px;
+      text-align: center;
+    }
+    .magazine-content-field {
+      width: 100%;
+      height: 100px;
+      background-color: white;
+      border: 1px solid #e1e5e7;
+      border-radius: 5px;
+    }
   }
 }
 
@@ -329,6 +450,26 @@
   &__body {
     @include wh(100%, auto);
     margin-bottom: 50px;
+    word-break: break-all;
+  }
+  &__hashtags {
+    @include wh(100%, auto);
+    margin-bottom: 30px;
+    color: #898D8C;
+    font-size: 12px;
+    display: flex;
+    li {
+      padding: 0 5px;
+      margin-right: 10px;
+      list-style: none;
+      float: left;
+      line-height: 25px;
+      background-color: #F2F4F4;
+      border-radius: 5px;
+      &:hover {
+        background-color: #EAECEC;
+      }
+    }
   }
   &__action {
     @include wh(100%, 30px);

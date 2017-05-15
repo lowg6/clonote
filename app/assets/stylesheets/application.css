@@ -14,5 +14,7 @@
  *= require_self
  *= require remodal-default-theme
  *= require remodal
+ *= require jquery.tagit
+ *= require tagit.ui-zendesk
  *= require font-awesome
  */

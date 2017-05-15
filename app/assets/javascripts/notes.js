@@ -16,6 +16,10 @@ $(document).on('turbolinks:load', function() {
     $('<input />').attr('type', 'hidden').attr('name', 'note[is_draft]').attr('value', true).appendTo('#new_note, .edit_note');
   });
 
+  $('#submit_public').on('click', function() {
+    $('<input />').attr('type', 'hidden').attr('name', 'note[is_draft]').attr('value', false).appendTo('#new_note, .edit_note');
+  });
+
   $('input[type="file"]').on('change', function(e) {
     var file = e.target.files[0];
         
@@ -39,5 +43,12 @@ $(document).on('turbolinks:load', function() {
 
   $('#price-pay, #price-field__number').on('change', function() {
     $('#price-pay').attr('value', $('#price-field__number').val());
+  });
+
+  $('#note-tags').tagit({
+    fieldName: 'note[tag_list]',
+    placeholderText: 'ハッシュタグを追加',
+    singleField: true,
+    availableTags: gon.available_tags
   });
 });

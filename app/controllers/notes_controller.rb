@@ -1,9 +1,12 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_note_tags_to_gon, only: [:edit]
+  before_action :set_available_tags_to_gon, only: [:new, :edit]
   
   def index
     @notes = Note.all
+    @tags = ActsAsTaggableOn::Tag
   end
 
   def show
@@ -45,6 +48,10 @@ class NotesController < ApplicationController
     @notes = current_user.notes.where(is_draft: true).order('created_at DESC')
   end
 
+  def index_hashtag
+    @notes = Note.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+  end
+
   private
   
   def set_note
@@ -52,6 +59,14 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft)
+    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list)
+  end
+
+  def set_note_tags_to_gon
+    gon.note_tags = @note.tag_list
+  end
+
+  def set_available_tags_to_gon
+    gon.available_tags = Note.tags_on(:tags).pluck(:name)
   end
 end

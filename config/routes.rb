@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'notes#index'
 
   get '/drafts', to: 'notes#index_draft'
+  get '/hashtag/:id', to: 'notes#index_hashtag'
 
   resources :notes
   resources :comments, only: :create

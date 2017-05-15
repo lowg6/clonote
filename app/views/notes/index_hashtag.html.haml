@@ -1,0 +1,37 @@
+.main-header
+  = render 'main_header'
+.hashtag-container
+  .hashtag-container-wrapper
+    .hashtag-container__name
+      = "##{params[:id]}"
+    - @notes.each do |note|
+      .hashtag-container__content
+        - if note.header_image.url
+          = link_to note_path(note) do
+            .hashtag-container__header-image{ style: "background-image: url('#{note.header_image}')" }
+        .hashtag-container__user-name
+          - if current_user.image.url
+            = link_to user_path(current_user.noteid) do
+              .hashtag-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+          .hashtag-container__profile
+            %p{ style: 'font-weight: bold;' }
+              = link_to current_user.nickname, user_path(current_user.noteid)
+            %p{ style: 'color: #a1a6a9; font-size: 9px;' }
+              = note.created_at_jp
+        .hashtag-container__title
+          = link_to note_path(note) do
+            = note.title
+        .hashtag-container__body
+          = note.body.truncate(200)
+        .hashtag-container__action
+          .hashtag-container__favorite-action{ style: "#{current_user.favorite?(note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
+            = render 'favorites/favorite_button', note: note
+            = note.favorites.count
+          .hashtag-container__comment-action
+            = link_to "#{note_path(note)}#comment" do
+              %span
+                コメント
+              = note.comments.count
+              %span
+                件
+= render 'layouts/footer'

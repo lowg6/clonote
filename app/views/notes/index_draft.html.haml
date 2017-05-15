@@ -1,4 +1,5 @@
-= render 'main_header'
+.main-header
+  = render 'main_header'
 .draft-container
   .draft-container-wrapper
     - @notes.each do |note|
@@ -21,7 +22,7 @@
           = link_to note_path(note) do
             = note.title
         .draft-container__body
-          = note.body
+          = note.body.truncate(200)
         .draft-container__action
           = link_to note, method: :delete do
             %span

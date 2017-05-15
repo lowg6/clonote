@@ -35,9 +35,28 @@
         %label
           有料
           = f.radio_button :price, '', id: 'price-pay'
+      .note-public-setting-container__detail-setting
+        .detail-setting
+          .detail-setting__header
+            %span{ style: 'font-weight: bold;' }
+              詳細設定
+            %span
+              （ハッシュタグ、マガジン）
+          .detail-setting__container
+            %label.detail-setting__hashtag-content
+              %p
+                ハッシュタグ
+              %ul#note-tags
+                - note.tag_list.each do |tag|
+                  %li
+                    = tag
+            .detail-setting__magazine-content
+              %p
+                マガジン
+              .magazine-content-field
     .note-public-setting-footer
       .note-public-setting-footer__buttons
         %span{ data: { remodal: { action: 'close' } } }
           キャンセル
-        = f.submit '公開'
+        = f.submit '公開', id: 'submit_public'
         

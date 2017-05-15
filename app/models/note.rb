@@ -6,6 +6,7 @@ class Note < ApplicationRecord
   has_many :comments
   belongs_to :user
   mount_uploader :header_image, ImageUploader
+  acts_as_taggable
 
   def last(limit)
     user.notes.order('created_at DESC').limit(limit)
