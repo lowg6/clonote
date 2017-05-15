@@ -4,6 +4,10 @@ $(document).on('turbolinks:load', function() {
     $('.remodal-wrapper').appendTo('#new_note, .edit_note');
   });
 
+  $('#submit_draft').on('click', function() {
+    $('<input />').attr('type', 'hidden').attr('name', 'note[is_draft]').attr('value', true).appendTo('#new_note, .edit_note');
+  });
+
   $('input[type="file"]').on('change', function(e) {
     var file = e.target.files[0];
         
