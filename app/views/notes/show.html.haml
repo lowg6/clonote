@@ -5,67 +5,71 @@
     = link_to new_note_path do
       %button.new-note-button
         ノートを投稿
-.note-show-container
-  .note-show-container-wrapper
-    - if @note.header_image.url
-      .note-show-container__header-image{ style: "background-image: url('#{@note.header_image}')" }
-    .note-show-container__user-name
-      - if @note.user.image.url
-        = link_to user_path(@note.user.noteid) do
-          .note-show-container__profile-image{ style: "background-image: url('#{@note.user.image}')" }
-      .note-show-container__profile
-        %p{ style: 'font-weight: bold;' }
-          = link_to @note.user.nickname, user_path(@note.user.noteid)
-        %p{ style: 'color: #a1a6a9; font-size: 9px;' }
-          = @note.created_at_jp
-          - if current_user?(@note.user)
-            %span
-              = link_to '削除', @note, method: :delete
-      - if current_user?(@note.user)
-        = link_to edit_note_path(@note) do
-          %button.note-show-container__setting-button
-            編集
-    .note-show-container__title
-      = @note.title
-    .note-show-container__body
-      = @note.body
-    .note-show-container__action
-      ★ +
-    .note-show-container__popular
-      %p
-        こちらもおすすめ
-      %ul
-        - @note.last(3).each do |note|
-          %li
-            = link_to note.title, note
-    .note-show-container__pager
-      - if @note.prev
-        = link_to @note.prev do
-          .note-show-container__pager-prev
-            .fa.fa-chevron-left
-            = @note.prev.title.truncate(20)
-        - if @note.next
-          = link_to @note.next do
-            .note-show-container__pager-next
-              = @note.next.title.truncate(20)
-              .fa.fa-chevron-right
-      - else
-        - if @note.next
-          = link_to @note.next do
-            .note-show-container__pager-next-noprev
-              = @note.next.title.truncate(20)
-              .fa.fa-chevron-right
-    .note-show-container__info
-      .note-show-container__info-profile-wrapper
-        - if @note.user.image.url
-          = link_to user_path(@note.user.noteid) do
-            .note-show-container__info-profile-image{ style: "background-image: url('#{@note.user.image}')" }
-        .note-show-container__info-container
-          .note-show-container__info-user-name
-            = link_to @note.user.nickname, user_path(@note.user.noteid)
-          .note-show-container__info-description
-            = @note.user.description.truncate(100)
-          - unless current_user?(@note.user)
-            .note-show-container__info-follow-button
-              = render 'users/follow', user: @note.user
-    .note-show-container__comment
+- if @note.is_draft && current_user?(@user)
+  = render 'show_draft'
+- else
+  .note-show-container
+    .note-show-container-wrapper
+      - if @note.header_image.url
+        .note-show-container__header-image{ style: "background-image: url('#{@note.header_image}')" }
+      .note-show-container__user-name
+        - if @user.image.url
+          = link_to user_path(@user.noteid) do
+            .note-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
+        .note-show-container__profile
+          %p{ style: 'font-weight: bold;' }
+            = link_to @user.nickname, user_path(@user.noteid)
+          %p{ style: 'color: #a1a6a9; font-size: 9px;' }
+            = @note.created_at_jp
+            - if current_user?(@user)
+              %span
+                = link_to '削除', @note, method: :delete
+        - if current_user?(@user)
+          = link_to edit_note_path(@note) do
+            %button.note-show-container__setting-button
+              編集
+      .note-show-container__title
+        = @note.title
+      .note-show-container__body
+        = @note.body
+      .note-show-container__action
+        ★ +
+      .note-show-container__popular
+        %p
+          こちらもおすすめ
+        %ul
+          - @note.published.last(3).each do |note|
+            %li
+              = link_to note.title, note
+      .note-show-container__pager
+        - if @note.prev
+          = link_to @note.prev do
+            .note-show-container__pager-prev
+              .fa.fa-chevron-left
+              = @note.prev.title.truncate(20)
+          - if @note.next
+            = link_to @note.next do
+              .note-show-container__pager-next
+                = @note.next.title.truncate(20)
+                .fa.fa-chevron-right
+        - else
+          - if @note.next
+            = link_to @note.next do
+              .note-show-container__pager-next-noprev
+                = @note.next.title.truncate(20)
+                .fa.fa-chevron-right
+      .note-show-container__info
+        .note-show-container__info-profile-wrapper
+          - if @user.image.url
+            = link_to user_path(@user.noteid) do
+              .note-show-container__info-profile-image{ style: "background-image: url('#{@user.image}')" }
+          .note-show-container__info-container
+            .note-show-container__info-user-name
+              = link_to @user.nickname, user_path(@user.noteid)
+            .note-show-container__info-description
+              = @user.description.truncate(100)
+            - unless current_user?(@user)
+              .note-show-container__info-follow-button
+                = render 'users/follow', user: @user
+      .note-show-container__comment
+      

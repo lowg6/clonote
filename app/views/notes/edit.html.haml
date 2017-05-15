@@ -1,5 +1,2 @@
-%h1 Editing Note
-= render 'form', note: @note
-= link_to 'Show', @note
-|
-= link_to 'Back', notes_path
+= form_for @note, method: :patch do |f|
+  = render "form", note: @note, f: f

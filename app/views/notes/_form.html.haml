@@ -1,0 +1,43 @@
+.note-header
+  .note-header__logo
+    = link_to root_path do
+      = image_tag 'clonote_logo.svg'
+  .note-header__buttons
+    %button#public-setting-button{ type: 'button' }
+      公開設定
+    = f.submit '下書き保存', id: 'submit_draft'
+.note-container-wrapper
+  .note-container
+    %label.note-container__image-overlay
+      = f.file_field :header_image, style: "display: none;"
+      .note-container__header-image
+        .fa.fa-picture-o.fa-2x
+    .note-container__title
+      = f.text_field :title, placeholder: 'ノートタイトル'
+    .note-container__body
+      = f.text_area :body, placeholder: 'ノート本文'
+.note-public-setting-wrapper
+  .note-public-setting
+    .note-public-setting-header
+      公開設定
+    .note-public-setting-container
+      .note-public-setting-container__sale-setting
+        %span{ style: 'font-weight: bold;'}
+          販売価格
+        &nbsp;
+        #price-field
+          = f.number_field :price_number, value: '100', min: '100', max: '10000', id: 'price-field__number'
+          円
+        %label
+          無料
+          = f.radio_button :price, '0', checked: true
+        &nbsp;
+        %label
+          有料
+          = f.radio_button :price, '', id: 'price-pay'
+    .note-public-setting-footer
+      .note-public-setting-footer__buttons
+        %span{ data: { remodal: { action: 'close' } } }
+          キャンセル
+        = f.submit '公開'
+        

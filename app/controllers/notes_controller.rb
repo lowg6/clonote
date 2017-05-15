@@ -6,6 +6,12 @@ class NotesController < ApplicationController
   end
 
   def show
+    if @note.is_draft
+      unless view_context.current_user?(@note.user)
+        redirect_to root_path
+      end
+    end
+    
     @user = @note.user
   end
 
@@ -14,6 +20,7 @@ class NotesController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless view_context.current_user?(@note.user)
   end
 
   def create
@@ -22,15 +29,8 @@ class NotesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
-      else
-        format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
+    @note.update(note_params)
+    redirect_to @note
   end
 
   def destroy
@@ -39,11 +39,12 @@ class NotesController < ApplicationController
   end
 
   private
-    def set_note
-      @note = Note.find(params[:id])
-    end
+  
+  def set_note
+    @note = Note.find(params[:id])
+  end
 
-    def note_params
-      params.require(:note).permit(:title, :body, :price, :header_image)
-    end
+  def note_params
+    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft)
+  end
 end
