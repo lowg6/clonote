@@ -1,3 +1,27 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixin';
+
+.comment-form {
+  line-height: 39px;
+  .new_comment {
+    display: flex;
+    justify-content: center;
+    margin-right: 8px;
+  }
+  &__current-user-image {
+    @include wh(30px, 30px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    border: 1px solid #F7F9F9;
+    border-radius: 30px;
+    margin: 5px;
+  }
+  &__text-field {
+    @include wh(auto, 30px);
+    input {
+      @include wh(530px, 14px);
+      font-size: 10px;
+      resize: none;
+    }
+  }
+}
