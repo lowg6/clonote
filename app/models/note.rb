@@ -2,6 +2,7 @@ class Note < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true
   belongs_to :user
+  has_many :comments
   mount_uploader :header_image, ImageUploader
 
   def last(limit)

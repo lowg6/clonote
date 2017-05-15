@@ -152,7 +152,6 @@
     margin-bottom: 20px;
     border-top: 1px solid #D9D9D9;
     display: flex;
-    justify-content: flex-end;
     line-height: 45px;
     font-size: 12px;
     p {
@@ -377,7 +376,7 @@
     text-align: right;
   }
   &__info {
-    @include wh(100%, auto);
+    @include wh(100%, 140px);
     position: relative;
     padding: 20px 0;
   }
@@ -405,7 +404,43 @@
   }
   &__comment {
     @include wh(100%, auto);
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    background-color: #f8f9fa;
+  }
+  &__comment-count {
+    @include wh(auto, auto);
+    padding: 15px 25px;
+    font-size: 10px;
+    background-color: #f8f9fa;
+  }
+  &__comment-list {
+    @include wh(auto, auto);
+    padding: 0 25px;
+    font-size: 10px;
+    background-color: #f8f9fa;
+    li {
+      display: flex;
+      word-break: break-all;
+      .comment-profile-image {
+        @include wh(30px, 30px);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
+        border-radius: 30px;
+        margin: 5px 0;
+      }
+      .comment-container {
+        padding: 7px;
+        p {
+          :hover {
+            color: $default-blue;
+          }
+        }
+        &__body {
+          margin: 5px 0;
+        }
+      }
+    }
   }
 }
 
