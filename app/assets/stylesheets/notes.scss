@@ -332,7 +332,10 @@
   }
   &__action {
     @include wh(100%, 30px);
-    margin-bottom: 30px;
+    margin: 0 0 20px 10px;
+    :hover {
+      color: #EDC500;
+    }
   }
   &__popular {
     @include wh(100%, 60px);
