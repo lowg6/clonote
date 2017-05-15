@@ -12,7 +12,7 @@ class NotesController < ApplicationController
         redirect_to root_path
       end
     end
-    
+
     @user = @note.user
   end
 
@@ -37,6 +37,10 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     redirect_to notes_url
+  end
+
+  def index_draft
+    @notes = current_user.notes.where(is_draft: true).order('created_at DESC')
   end
 
   private
