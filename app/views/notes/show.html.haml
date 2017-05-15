@@ -67,4 +67,25 @@
                 .note-show-container__info-follow-button
                   = render 'users/follow', user: @user
       .note-show-container__comment
-        = render 'comments/index'
+        .note-show-container__comment-count
+          %span
+            コメント
+          = @comments.count
+          %span
+            件
+        %ul.note-show-container__comment-list
+          - @comments.each do |comment|
+            %li
+              - if comment.user.image.url
+                = link_to user_path(comment.user.noteid) do
+                  .comment-profile-image{ style: "background-image: url('#{comment.user.image}')" }
+              .comment-container
+                %p.comment-container__header
+                  = link_to comment.user.nickname, user_path(comment.user.noteid), style: 'font-weight: bold'
+                  &nbsp;
+                  %span{ style: 'color: #a1a6a9; font-size: 9px;' }
+                    = comment.created_at_jp
+                %p.comment-container__body
+                  = comment.text
+        - if user_signed_in?
+          = render 'comments/form', comment: @comment
