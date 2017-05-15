@@ -6,6 +6,7 @@ class NotesController < ApplicationController
   
   def index
     @notes = Note.all
+    @tags = ActsAsTaggableOn::Tag
   end
 
   def show
