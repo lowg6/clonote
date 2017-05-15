@@ -38,7 +38,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to notes_url
+    redirect_to drafts_path
   end
 
   def index_draft
