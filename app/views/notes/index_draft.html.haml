@@ -22,7 +22,7 @@
           = link_to note_path(note) do
             = note.title
         .draft-container__body
-          = note.body
+          = note.body.truncate(200)
         .draft-container__action
           = link_to note, method: :delete do
             %span
