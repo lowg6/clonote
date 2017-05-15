@@ -1,0 +1,24 @@
+.note-show-container
+  .note-show-container-wrapper
+    - if @note.header_image.url
+      .note-show-container__header-image{ style: "background-image: url('#{@note.header_image}')" }
+    .note-show-container__user-name
+      - if @user.image.url
+        = link_to user_path(@user.noteid) do
+          .note-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
+      .note-show-container__profile
+        %p{ style: 'font-weight: bold;' }
+          = link_to @user.nickname, user_path(@user.noteid)
+        %p{ style: 'color: #a1a6a9; font-size: 9px;' }
+          = @note.created_at_jp
+          - if current_user?(@user)
+            %span
+              = link_to '下書き削除', @note, method: :delete
+      - if current_user?(@user)
+        = link_to edit_note_path(@note) do
+          %button.note-show-container__setting-button
+            下書きを編集
+    .note-show-container__title
+      = @note.title
+    .note-show-container__body
+      = @note.body
