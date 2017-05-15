@@ -23,7 +23,7 @@
         .draft-container__body
           = note.body
         .draft-container__action
-          = link_to '/' do
-            %p
-              コメントする
+          = link_to note, method: :delete do
+            %span
+              削除
 = render 'layouts/footer'
