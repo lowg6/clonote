@@ -44,4 +44,11 @@ $(document).on('turbolinks:load', function() {
   $('#price-pay, #price-field__number').on('change', function() {
     $('#price-pay').attr('value', $('#price-field__number').val());
   });
+
+  $('#note-tags').tagit({
+    fieldName: 'note[tag_list]',
+    placeholderText: 'ハッシュタグを追加',
+    singleField: true,
+    availableTags: gon.available_tags
+  });
 });
