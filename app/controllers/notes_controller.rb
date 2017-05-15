@@ -7,7 +7,7 @@ class NotesController < ApplicationController
 
   def show
     redirect_to root_path if @note.is_draft
-    
+
     @user = @note.user
   end
 
@@ -16,6 +16,7 @@ class NotesController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless view_context.current_user?(@note.user)
   end
 
   def create
