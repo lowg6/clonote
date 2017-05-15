@@ -1,0 +1,8 @@
+#comment.comment-form
+  = form_for comment do |f|
+    = f.hidden_field :note_id, value: comment.note.id
+    = f.hidden_field :user_id, value: current_user.id
+    - if user_signed_in? && current_user.image.url
+      .comment-form__current-user-image{ style: "background-image: url('#{current_user.image}')" }
+    .comment-form__text-field
+      = f.text_field :text, placeholder: 'コメントする', maxLength: '1000'
