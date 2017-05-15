@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
     $('<input />').attr('type', 'hidden').attr('name', 'note[is_draft]').attr('value', true).appendTo('#new_note, .edit_note');
   });
 
-    $('#submit_public').on('click', function() {
+  $('#submit_public').on('click', function() {
     $('<input />').attr('type', 'hidden').attr('name', 'note[is_draft]').attr('value', false).appendTo('#new_note, .edit_note');
   });
 
