@@ -14,6 +14,8 @@ class NotesController < ApplicationController
     end
 
     @user = @note.user
+    @comment = @note.comments.new
+    @comments = @note.comments.includes(:user).order('created_at ASC')
   end
 
   def new
