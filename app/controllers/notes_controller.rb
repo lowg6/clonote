@@ -48,6 +48,10 @@ class NotesController < ApplicationController
     @notes = current_user.notes.where(is_draft: true).order('created_at DESC')
   end
 
+  def index_hashtag
+    @notes = Note.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+  end
+
   private
   
   def set_note
