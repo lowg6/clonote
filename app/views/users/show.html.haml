@@ -9,7 +9,7 @@
   - if @user.header_image.url
     .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
   .user-header__inner-center
-    - if @user.image.url
+    - if user_signed_in? && @user.image.url
       .user-profile-image{ style: "background-image: url('#{@user.image}')" }
     .user-profile-content
       %span.user-profile-content--username
@@ -22,7 +22,8 @@
           %button.setting-button
             設定
       - else
-        = render 'follow_form'
+        - if user_signed_in?
+          = render 'follow_form'
   .user-header__inner-bottom
     %ul.user-category-tabs
       = link_to '/' do

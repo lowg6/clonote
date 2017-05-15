@@ -68,8 +68,8 @@
               = link_to @user.nickname, user_path(@user.noteid)
             .note-show-container__info-description
               = @user.description.truncate(100)
-            - unless current_user?(@user)
-              .note-show-container__info-follow-button
-                = render 'users/follow', user: @user
+            - if user_signed_in?
+              - unless current_user?(@user)
+                .note-show-container__info-follow-button
+                  = render 'users/follow', user: @user
       .note-show-container__comment
-      
