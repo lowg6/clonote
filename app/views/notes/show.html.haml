@@ -26,8 +26,9 @@
         = @note.title
       .note-show-container__body
         = @note.body
-      .note-show-container__action
-        ★ +
+      .note-show-container__action{ style: "#{current_user.favorite?(@note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
+        = render 'favorites/favorite_button', note: @note
+        = @note.favorites.count
       .note-show-container__popular
         %p
           こちらもおすすめ

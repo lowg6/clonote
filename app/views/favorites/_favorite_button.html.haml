@@ -1,0 +1,4 @@
+- if current_user.favorite?(@note)
+  = render 'favorites/destroy', note: @note
+- else
+  = render 'favorites/create', note: @note
