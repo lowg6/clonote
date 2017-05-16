@@ -5,7 +5,7 @@ class CreateMagazines < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :price, default: 0
       t.boolean :is_public, default: false, null: false
-
+      
       t.timestamps
     end
   end
