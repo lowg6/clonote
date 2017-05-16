@@ -19,7 +19,7 @@
             設定
       - else
         - if user_signed_in?
-          = render 'relationships/follow_form', user: @user
+          = render 'relationships/follow_button', user: @user
   .user-header__inner-bottom
     %ul.user-category-tabs
       = link_to '/' do

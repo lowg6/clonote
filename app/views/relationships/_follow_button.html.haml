@@ -1,0 +1,4 @@
+- if current_user.following?(user)
+  = render 'relationships/destroy', user: user
+- else
+  = render 'relationships/create', user: user
