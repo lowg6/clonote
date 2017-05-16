@@ -2,6 +2,7 @@
 
 .magazine-container {
   background-color: #F7F9F9;
+  padding-bottom: 50px;
   .magazine-container-wrapper {
     @include wh(580px, auto);
     margin: 0 auto;

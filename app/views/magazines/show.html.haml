@@ -33,7 +33,7 @@
             設定
       - else
         .magazine-show-container__follow-button
-          = render 'relationships/follow', user: @user
+          = render 'magazine_relationships/follow_button', magazine: @magazine
       .magazine-show-container__info
         .magazine-title
           = @magazine.title
