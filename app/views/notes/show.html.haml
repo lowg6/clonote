@@ -72,7 +72,7 @@
             - if user_signed_in?
               - unless current_user?(@user)
                 .note-show-container__info-follow-button
-                  = render 'users/follow', user: @user
+                  = render 'relationships/follow', user: @user
       .note-show-container__comment
         .note-show-container__comment-count
           %span
@@ -96,3 +96,4 @@
                   = comment.text
         - if user_signed_in?
           = render 'comments/form', comment: @comment
+= render 'layouts/footer'

@@ -1,0 +1,49 @@
+.main-header
+  = render 'notes/main_header'
+.magazine-show-header
+  .magazine-show-header__header-image{ style: "background-image: url('#{@magazine.header_image}')" }
+.magazine-show-container
+  .magazine-show-container-wrapper
+    .magazine-show-container__main-column
+      - @magazine.notes.each do |note|
+        .magazine-show-container__note-content
+          .magazine-show-container__user-name
+            - if current_user.image.url
+              = link_to user_path(current_user.noteid) do
+                .magazine-show-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+            .magazine-show-container__user-profile
+              %p{ style: 'font-weight: bold;' }
+                = link_to current_user.nickname, user_path(current_user.noteid)
+              %p{ style: 'color: #a1a6a9; font-size: 9px;' }
+                = note.created_at_jp
+          - if note.header_image.url
+            = link_to note_path(note) do
+              .magazine-show-container__header-image{ style: "background-image: url('#{note.header_image}')" }
+          .magazine-show-container__note-title
+            = link_to note_path(note) do
+              = note.title
+          .magazine-show-container__note-body
+            = raw(note.body.truncate(200).gsub(/\n/, '<br>'))
+          .magazine-show-container__action
+            = link_to 'もっと見る', note_path(note)
+    .magazine-show-container__side-column
+      - if current_user?(@user)
+        = link_to edit_magazine_path(@magazine) do
+          %button.magazine-show-container__setting-button
+            設定
+      - else
+        .magazine-show-container__follow-button
+          = render 'relationships/follow', user: @user
+      .magazine-show-container__info
+        .magazine-title
+          = @magazine.title
+        .magazine-description
+          = @magazine.description
+        .magazine-user
+          - if @user.image.url
+            = link_to user_path(@user.noteid) do
+              .magazine-user-image{ style: "background-image: url('#{@user.image}')" }
+          %p
+            = link_to user_path(@user.noteid) do
+              = @user.nickname
+= render 'layouts/footer'

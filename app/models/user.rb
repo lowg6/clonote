@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_notes, through: :favorites, source: :note
   has_many :notes
+  has_many :magazines
   has_many :comments
   mount_uploader :header_image, ImageUploader
   mount_uploader :image, ImageUploader

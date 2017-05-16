@@ -3,8 +3,9 @@ class Note < ApplicationRecord
   validates :price, presence: true
   has_many :favorites
   has_many :favoriting_users, through: :favorites, source: :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :user
+  belongs_to :magazine
   mount_uploader :header_image, ImageUploader
   acts_as_taggable
 

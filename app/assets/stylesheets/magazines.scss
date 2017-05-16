@@ -1,0 +1,308 @@
+@import 'mixin';
+
+.magazine-container {
+  background-color: #F7F9F9;
+  .magazine-container-wrapper {
+    @include wh(580px, auto);
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  &__create-magazine {
+    @include wh(265px, 230px);
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #E8ECEB;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    p {
+      @include pos(absolute, auto, auto, 110px, 78px);
+      color: #898D8C;
+    }
+    &:hover {
+      border-color: #dedede;
+    }
+  }
+}
+
+.magazine-content {
+  @include wh(265px, 230px);
+  margin: 10px;
+  background-color: white;
+  border: 1px solid #E8ECEB;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  &__title {
+    p {
+      @include pos(absolute, auto, auto, 155px, 15px);
+      word-break: break-all;
+      font-size: 14px;
+      color: white;
+      z-index: 1;
+    }
+  }
+  &__header-image {
+    height: 90px;
+    border-radius: 5px 5px 0 0;
+    background-size: cover;
+  }
+  &__header-overlay {
+    height: 90px;
+    border-radius: 5px 5px 0 0;
+    background-color: #222;
+    opacity: .5;
+  }
+  &__body {
+    height: 80px;
+    p {
+      @include pos(absolute, 94px, auto, auto, auto);
+      word-break: break-all;
+      font-size: 12px;
+      margin: 10px;
+    }
+  }
+  &__user {
+    height: 50px;
+    margin: 0 10px;
+    position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    p {
+      font-size: 12px;
+      position: absolute;
+      bottom: 16px;
+      left: 40px;
+      color: #898D8C;
+    }
+  }
+  &__user-image {
+    @include wh(30px, 30px);
+    @include pos(absolute, auto, auto, 5px, 0);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    border: 1px solid #F7F9F9;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  &__follow-button{
+    input {
+      @include pos(absolute, auto, 5px, 5px, auto);
+      padding: 2px 6px 3px;
+      font-size: 12px;
+    }
+  }
+}
+
+.magazine-form-header {
+  @include wh(100%, 48px);
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  background-color: white;
+  text-align: center;
+  &__logo {
+    line-height: 60px;
+  }
+  &__buttons {
+    @include pos(absolute, 6px, 15px, auto, auto);
+    input, button {
+      @include color(white, #222);
+      height: 35px;
+      border: 1px solid #D9D9D9;
+    }
+  }
+}
+
+.note-container-wrapper{
+  @include wh(auto, calc(100vh - 58px));
+  background-color: white;
+}
+
+.magazine-form-container {
+  @include wh(620px, auto);
+  margin: 0 auto;
+  padding-top: 10px;
+  &__image-overlay {
+    height: 100px;
+    margin-top: 10px;
+    line-height: 115px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__header-image {
+    @include wh(630px, auto);
+    opacity: .8;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+  }
+  &__title {
+    margin-top: 10px;
+    input {
+      @include wh(100%, 30px);
+      resize: none;
+      font-size: 25px;
+    }
+  }
+  &__description {
+    margin-top: 10px;
+    textarea {
+      @include wh(100%, 200px);
+      resize: none;
+      font-size: 15px;
+    }
+  }
+}
+
+.magazine-detail-setting {
+  width: 100%;
+  padding-right: 10px;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #e1e5e7;
+  border-radius: 5px;
+  &__header {
+    padding: 20px;
+    margin-left: 10px;
+    text-align: left;
+  }
+  &__sale-setting {
+    padding: 20px;
+    border-top: 1px solid #D9D9D9;
+    margin-left: 8px;
+    display: flex;
+    position: relative;
+    #price-field {
+      @include pos(absolute, 19px, auto, auto, 225px);
+    }
+  }
+  &__public-setting {
+    padding: 20px;
+    border-top: 1px solid #D9D9D9;
+    margin-left: 8px;
+    display: flex;
+  }
+  &__container {
+    border-top: 1px solid #e1e5e7;
+  }
+}
+
+.magazine-show-header {
+  &__header-image {
+    height: 400px;
+  } 
+}
+
+.magazine-show-container {
+  @include wh(100%, 100vh);
+  background-color: white;
+  padding-bottom: 50px;
+  &__main-column {
+    width: 600px;
+  }
+  &__side-column {
+    width: 300px;
+    height: 500px;
+    margin-left: 50px;
+  }
+  &__note-content {
+    margin: 10px 0 30px;
+    border-bottom: 1px solid #e1e5e7;
+  }
+  &__header-image {
+    @include wh(100%, 200px);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    margin: 20px 0;
+  }
+  &__user-name {
+    @include wh(100%, auto);
+    margin: 20px 10px;
+    position: relative;
+    display: flex;
+  }
+  &__profile-image {
+    @include wh(40px, 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 40px;
+    margin: 5px;
+  }
+  &__user-profile {
+    padding: 7px;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  &__user-title {
+    @include wh(100%, 50px);
+    margin-bottom: 1.1em;
+    font-size: 25px;
+  }
+  &__user-body {
+    @include wh(100%, auto);
+    margin-bottom: 50px;
+    word-break: break-all;
+  }
+  &__action {
+    @include wh(100%, 30px);
+    margin-bottom: 20px;
+    line-height: 45px;
+    font-size: 12px;
+    color: $default-blue;
+  }
+  &__setting-button {
+    @include color(white, $default-blue);
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $default-blue;
+  }
+  &__follow-button {
+    input {
+      position: initial;
+      width: 100%;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+  &__info {
+    margin-top: 20px;
+    font-size: 14px;
+    .magazine-title {
+      margin-top: 30px;
+      font-weight: bold;
+    }
+    .magazine-description {
+      margin-top: 20px;
+    }
+    .magazine-user {
+      position: relative;
+      margin-top: 20px;
+      .magazine-user-image {
+        @include wh(30px, 30px);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
+        border: 1px solid #F7F9F9;
+        border-radius: 30px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      p {
+        @include pos(absolute, auto, auto, 10px, 47px);
+        color: #898D8C;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.magazine-show-container-wrapper {
+  @include wh(900px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+}

@@ -1,0 +1,47 @@
+.magazine-form-header
+  .magazine-form-header__logo
+    = link_to root_path do
+      = image_tag 'clonote_logo.svg'
+  .magazine-form-header__buttons
+    = f.submit '作成'
+.magazine-form-container-wrapper
+  .magazine-form-container
+    %label.magazine-form-container__image-overlay
+      = f.file_field :header_image, style: "display: none;"
+      .magazine-form-container__header-image
+        .fa.fa-picture-o.fa-2x
+    .magazine-form-container__title
+      = f.text_field :title, placeholder: 'マガジンのタイトルを入力してください'
+    .magazine-form-container__description
+      = f.text_area :description, placeholder: 'マガジンの説明'
+    .magazine-detail-setting
+      .magazine-detail-setting__header
+        %span{ style: 'font-weight: bold;' }
+          詳細設定
+      .magazine-detail-setting__sale-setting
+        %span{ style: 'font-weight: bold;'}
+          販売価格
+        &nbsp;
+        #price-field
+          = f.number_field :price_number, value: '100', min: '100', max: '10000', id: 'price-field__number'
+          円
+        &nbsp;
+        %label
+          無料
+          = f.radio_button :price, '0', checked: true
+        &nbsp;
+        %label
+          有料
+          = f.radio_button :price, '', id: 'price-pay'
+      .magazine-detail-setting__public-setting
+        %span{ style: 'font-weight: bold;'}
+          公開設定
+        &nbsp;
+        &nbsp;
+        %label
+          公開
+          = f.radio_button :is_public, '1', checked: true
+        &nbsp;
+        %label
+          非公開
+          = f.radio_button :is_public, '0'
