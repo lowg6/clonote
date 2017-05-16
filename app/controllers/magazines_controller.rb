@@ -35,7 +35,7 @@ class MagazinesController < ApplicationController
 
   def destroy
     @magazine.destroy
-    redirect_to magazines_url
+    redirect_to magazines_path
   end
 
   private
