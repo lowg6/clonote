@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20170516072647) do
 
   create_table "magazines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.text     "description", limit: 65535
-    t.integer  "price",                     default: 0
-    t.boolean  "is_public",                 default: false, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.text     "description",  limit: 65535
+    t.string   "header_image"
+    t.integer  "price",                      default: 0
+    t.boolean  "is_public",                  default: false, null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
