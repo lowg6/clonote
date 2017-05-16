@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516140011) do
+ActiveRecord::Schema.define(version: 20170516180837) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20170516140011) do
     t.index ["note_id"], name: "index_favorites_on_note_id", using: :btree
     t.index ["user_id", "note_id"], name: "index_favorites_on_user_id_and_note_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
+
+  create_table "magazine_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "magazine_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["magazine_id"], name: "index_magazine_relationships_on_magazine_id", using: :btree
+    t.index ["user_id", "magazine_id"], name: "index_magazine_relationships_on_user_id_and_magazine_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_magazine_relationships_on_user_id", using: :btree
   end
 
   create_table "magazines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
