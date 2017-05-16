@@ -16,7 +16,7 @@
               = link_to current_user.nickname, user_path(current_user.noteid)
             %p{ style: 'color: #a1a6a9; font-size: 9px;' }
               = note.created_at_jp
-          .draft-container__draft-label
+          #likes-button-label
             下書き
         .draft-container__title
           = link_to note_path(note) do
