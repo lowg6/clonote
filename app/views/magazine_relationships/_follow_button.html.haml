@@ -1,0 +1,4 @@
+- if current_user.magazine_following?(magazine)
+  = render 'magazine_relationships/destroy', magazine: magazine
+- else
+  = render 'magazine_relationships/create', magazine: magazine

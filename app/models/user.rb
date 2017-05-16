@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
+  has_many :magazine_relationships, dependent: :destroy
+  has_many :follow_magazines, through: :magazine_relationships, source: :magazine
   has_many :favorites, dependent: :destroy
   has_many :favorite_notes, through: :favorites, source: :note
   has_many :notes, dependent: :destroy
@@ -46,5 +48,21 @@ class User < ApplicationRecord
 
   def unfavorite!(note)
     favorites.find_by(note_id: note.id).destroy
+  end
+
+  def magazine_following?(magazine)
+    magazine_relationships.find_by(magazine_id: magazine.id)
+  end
+
+  def magazine_prefollow!(magazine)
+    magazine_relationships.build(magazine_id: magazine.id)
+  end
+
+  def magazine_follow!(magazine)
+    magazine_relationships.create!(magazine_id: magazine.id)
+  end
+
+  def magazine_unfollow!(magazine)
+    magazine_relationships.find_by(magazine_id: magazine.id).destroy
   end
 end

@@ -8,11 +8,12 @@ Rails.application.routes.draw do
 
   resources :notes
   resources :comments, only: :create
-  resources :favorites, only: [:create, :destroy]
   resources :users, param: :noteid, path: '/' do
     member do
      get :following, :followers, :favorite
     end
   end
+  resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :magazine_relationships, only: [:create, :destroy]
 end

@@ -1,0 +1,3 @@
+= form_for current_user.magazine_prefollow!(magazine) do |f|
+  = f.hidden_field :magazine_id
+  = f.submit "フォロー", class: 'follow-button'
