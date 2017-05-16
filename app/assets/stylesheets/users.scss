@@ -68,7 +68,7 @@
 }
 
 .user-container {
-  @include wh(100%, 100vh);
+  @include wh(100%, auto);
   background-color: #F7F9F9;
 }
 
