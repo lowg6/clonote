@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_notes, through: :favorites, source: :note
-  has_many :notes
-  has_many :magazines
+  has_many :notes, dependent: :destroy
+  has_many :magazines, dependent: :destroy
   has_many :comments
   mount_uploader :header_image, ImageUploader
   mount_uploader :image, ImageUploader
