@@ -45,6 +45,6 @@ class MagazinesController < ApplicationController
   end
 
   def magazine_params
-    params.require(:magazine).permit(:title, :description, :header_image, :price, :is_public).merge(user_id: current_user.id)
+    params.require(:magazine).permit(:title, :description, :header_image, :price, :is_public)
   end
 end
