@@ -1,13 +1,11 @@
 class Note < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true
-  validates :user_id, presence: true
-  validates :is_draft, presence: true
   has_many :favorites, dependent: :destroy
   has_many :favoriting_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
+  has_many :magazine
   belongs_to :user
-  belongs_to :magazine
   mount_uploader :header_image, ImageUploader
   acts_as_taggable
 
