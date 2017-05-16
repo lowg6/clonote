@@ -1,2 +1,3 @@
 = form_for current_user.favorite?(note), method: :delete do |f|
-  = f.submit '', class: 'fa fa-star fa-lg'
+  = link_to '#', onclick: "$('.edit_favorite').submit()" do
+    .fa.fa-star.fa-lg
