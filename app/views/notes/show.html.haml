@@ -71,7 +71,7 @@
             .note-show-container__info-description
               = @user.description.truncate(100)
             - if user_signed_in?
-              - unless !current_user?(@user)
+              - unless current_user?(@user)
                 .note-show-container__info-follow-button
                   = render 'relationships/follow_button', user: @user
       .note-show-container__comment
