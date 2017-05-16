@@ -36,6 +36,10 @@ class User < ApplicationRecord
     favorites.find_by(note_id: note.id)
   end
 
+  def prefavorite!(note)
+    favorites.build(note_id: note.id)
+  end
+
   def favorite!(note)
     favorites.create!(note_id: note.id)
   end

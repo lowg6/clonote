@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def create
-    @note = Note.find(params[:note_id])
+    @note = Note.find(params[:favorite][:note_id])
     current_user.favorite!(@note)
     redirect_to @note
   end
