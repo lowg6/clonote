@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516180837) do
+ActiveRecord::Schema.define(version: 20170516202258) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170516180837) do
     t.string   "header_image"
     t.string   "image",                                default: "https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/default_profile.png"
     t.string   "noteid"
+    t.integer  "cash",                                 default: 0,                                                                         null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
