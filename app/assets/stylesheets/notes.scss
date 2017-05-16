@@ -108,6 +108,7 @@
 .draft-container {
   height: 100%;
   background-color: #F7F9F9;
+  padding-bottom: 50px;
   &__draft {
     @include pm(0 20px, 20px 0);
     background-color: white;
@@ -247,6 +248,7 @@
   @include wh(580px, auto);
   margin: 0 auto;
   padding-top: 20px;
+  padding-bottom: 50px;
 }
 
 .note-header {
@@ -410,6 +412,7 @@
 .note-show-container {
   @include wh(100%, 100%);
   background-color: white;
+  padding-bottom: 20px;
   &__header-image {
     @include wh(100%, 200px);
     background-repeat: no-repeat;
