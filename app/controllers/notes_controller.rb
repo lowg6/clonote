@@ -59,7 +59,7 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list)
+    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list, :magazine_id)
   end
 
   def set_note_tags_to_gon
