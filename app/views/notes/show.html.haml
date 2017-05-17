@@ -26,15 +26,38 @@
       .note-show-container__title
         = @note.title
       .note-show-container__body
-        = raw(@note.body.gsub(/\n/, '<br>'))
+        - if !current_user?(@user) && !@is_purchased && @note.price > 0
+          = raw(@note.body.truncate(100).gsub(/\n/, '<br>'))
+          .note-show-container__paywall
+            %p.paywall-text
+              この続きを見るには
+            %p.paywall-count
+              = "(残り#{@note.body.length - 100}文字)"
+            %p.paywall-text-guide
+              %span
+                ノートを購入する
+            .paywall-buy-box
+              .paywall-buy-box__image.fa.fa-pencil.fa-3x
+              .paywall-buy-box__info
+                %p.paywall-buy-box__title
+                  = @note.title.truncate(12)
+                %p.paywall-buy-box__nickname
+                  = @user.nickname
+                %p.paywall-buy-box__price
+                  = "#{@note.price}円"
+              .paywall-buy-box__button
+                = link_to new_purchase_path(object_id: @note.id, category: :note) do
+                  %button#buy-note-button
+                    購入して続きを見る
+        - else
+          = raw(@note.body.gsub(/\n/, '<br>'))
       %ul.note-show-container__hashtags
         - @note.tag_list.each do |tag|
           = link_to "/hashtag/#{tag}" do
             %li
               = "##{tag}"
-      .note-show-container__action{ style: "#{current_user.favorite?(@note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
+      .note-show-container__action
         = render 'favorites/favorite_button', note: @note
-        = @note.favorites.count
       .note-show-container__popular
         %p
           こちらもおすすめ
@@ -70,7 +93,7 @@
             .note-show-container__info-description
               = @user.description.truncate(100)
             - if user_signed_in?
-              - unless !current_user?(@user)
+              - unless current_user?(@user)
                 .note-show-container__info-follow-button
                   = render 'relationships/follow_button', user: @user
       .note-show-container__comment

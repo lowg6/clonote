@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :magazines, dependent: :destroy
   has_many :comments
+  has_many :purchases
   mount_uploader :header_image, ImageUploader
   mount_uploader :image, ImageUploader
 

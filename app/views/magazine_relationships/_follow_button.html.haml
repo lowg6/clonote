@@ -1,4 +1,5 @@
-- if current_user.magazine_following?(magazine)
-  = render 'magazine_relationships/destroy', magazine: magazine
-- else
-  = render 'magazine_relationships/create', magazine: magazine
+- if user_signed_in?
+  - if current_user.magazine_following?(magazine)
+    = render 'magazine_relationships/destroy', magazine: magazine
+  - else
+    = render 'magazine_relationships/create', magazine: magazine

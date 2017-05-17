@@ -2,8 +2,8 @@
   = render 'main_header'
   .main-header__inner-bottom
     %ul.category-tabs
-      = link_to '/' do
-        %li おすすめ
+      = link_to root_path do
+        %li トップ
       = link_to '/' do
         %li マンガ
       = link_to '/' do
@@ -20,4 +20,5 @@
           %li
             = "##{tag}"
 .main-container
+  = render 'note_list', notes: @notes
 = render 'layouts/footer'

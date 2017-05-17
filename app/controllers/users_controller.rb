@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: :show
 
   def show
+    @notes = @user.notes.where(is_draft: false).order('created_at DESC')
   end
 
   def edit

@@ -51,7 +51,7 @@
   &__header-overlay {
     height: 90px;
     border-radius: 5px 5px 0 0;
-    background-color: #222;
+    background-color: black;
     opacity: .5;
   }
   &__body {
@@ -107,7 +107,7 @@
   &__buttons {
     @include pos(absolute, 6px, 15px, auto, auto);
     input, button {
-      @include color(white, #222);
+      @include color(white, black);
       height: 35px;
       border: 1px solid #D9D9D9;
     }
@@ -196,7 +196,7 @@
 }
 
 .magazine-show-container {
-  @include wh(100%, 100vh);
+  @include wh(100%, auto);
   background-color: white;
   padding-bottom: 50px;
   &__main-column {

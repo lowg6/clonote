@@ -1,5 +1,15 @@
 @import 'mixin';
 
+#likes-button-label {
+  @include pos(absolute, 9px, 12px, auto, auto);
+  @include color(white, $default-blue);
+  padding: 5px 10px;
+  border: 1px solid $default-blue;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: default;
+}
+
 .main-header {
   @include wh(100%, auto);
   font-size: 12px;
@@ -66,8 +76,78 @@
   }
 }
 
+.main-container {
+  background-color: #F7F9F9;
+}
+
+.note-list-container {
+  @include wh(580px, 100%);
+  margin: 0 auto;
+  padding: 1px 0;
+  background-color: #F7F9F9;
+  &__content {
+    @include pm(0 20px, 20px 0);
+    background-color: white;
+    border: 1px solid #E8ECEB;
+  }
+  &__header-image {
+    @include wh(100%, 200px);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #D9D9D9;
+    margin: 20px 0;
+  }
+  &__user-name {
+    @include wh(100%, auto);
+    margin: 20px 10px;
+    position: relative;
+    display: flex;
+  }
+  &__profile-image {
+    @include wh(40px, 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 40px;
+    margin: 5px;
+  }
+  &__profile {
+    padding: 7px;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  &__title {
+    @include wh(100%, 50px);
+    margin-bottom: 1.1em;
+    font-size: 25px;
+  }
+  &__body {
+    @include wh(100%, auto);
+    margin-bottom: 50px;
+    word-break: break-all;
+  }
+  &__action {
+    @include wh(100%, 30px);
+    margin-bottom: 20px;
+    border-top: 1px solid #D9D9D9;
+    display: flex;
+    line-height: 45px;
+    font-size: 12px;
+    justify-content: space-between;
+  }
+  &__favorite-action {
+    display: flex;
+    :hover {
+      color: #EDC500;
+    }
+  }
+  &__comment-action {
+    color: $default-blue;
+  }
+}
+
 .category-tabs {
-  color: #222;
+  color: black;
   font-size: 13px;
   float: left;
   li {
@@ -76,7 +156,7 @@
     list-style: none;
     float: left;
     &:hover {
-      border-bottom: 2px solid #222;
+      border-bottom: 2px solid black;
     }
   }
 }
@@ -98,11 +178,6 @@
       background-color: #EAECEC;
     }
   }
-}
-
-.main-container {
-  @include wh(100%, 100vh);
-  background-color: #F7F9F9;
 }
 
 .draft-container {
@@ -161,15 +236,6 @@
       color: $default-blue;
     }
   }
-  &__draft-label {
-    @include pos(absolute, 9px, 12px, auto, auto);
-    @include color(white, $default-blue);
-    padding: 5px 10px;
-    border: 1px solid $default-blue;
-    border-radius: 5px;
-    font-size: 12px;
-    cursor: default;
-  }
 }
 
 .draft-container-wrapper {
@@ -183,64 +249,6 @@
   background-color: #F7F9F9;
   &__name {
     font-size: 30px;
-  }
-  &__content {
-    @include pm(0 20px, 20px 0);
-    background-color: white;
-    border: 1px solid #E8ECEB;
-  }
-  &__header-image {
-    @include wh(100%, 200px);
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid #D9D9D9;
-    margin: 20px 0;
-  }
-  &__user-name {
-    @include wh(100%, auto);
-    margin: 20px 10px;
-    position: relative;
-    display: flex;
-  }
-  &__profile-image {
-    @include wh(40px, 40px);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    border-radius: 40px;
-    margin: 5px;
-  }
-  &__profile {
-    padding: 7px;
-    font-size: 12px;
-    line-height: 16px; 
-  }
-  &__title {
-    @include wh(100%, 50px);
-    margin-bottom: 1.1em;
-    font-size: 25px;
-  }
-  &__body {
-    @include wh(100%, auto);
-    margin-bottom: 50px;
-    word-break: break-all;
-  }
-  &__action {
-    @include wh(100%, 30px);
-    margin-bottom: 20px;
-    border-top: 1px solid #D9D9D9;
-    display: flex;
-    line-height: 45px;
-    font-size: 12px;
-    justify-content: space-between;
-  }
-  &__favorite-action {
-    :hover {
-      color: #EDC500;
-    }
-  }
-  &__comment-action {
-    color: $default-blue;
   }
 }
 
@@ -263,7 +271,7 @@
   &__buttons {
     @include pos(absolute, 6px, 15px, auto, auto);
     input, button {
-      @include color(white, #222);
+      @include color(white, black);
       height: 35px;
       border: 1px solid #D9D9D9;
     }
@@ -455,6 +463,89 @@
     margin-bottom: 50px;
     word-break: break-all;
   }
+  &__paywall {
+    text-align: center;
+    margin: 35px 0;
+    padding: 20px 80px;
+    border: 3px solid #e1e5e7;
+    .paywall-text {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .paywall-count {
+      font-size: 11px;
+      color: #aaa;
+    }
+    .paywall-text-guide {
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 30px;
+      &:before {
+        content: "";
+        display: block;
+        border-top: solid 1px #efefef;
+        width: 100%;
+        height: 1px;
+        margin-bottom: -7px;
+      }
+      span {
+        padding: 0 20px;
+        background-color: white;
+      }
+    }
+    .paywall-buy-box {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 20px 0 10px;
+      border: 1px solid #efefef;
+      background: #f8f9fa;
+      text-align: left;
+      &__info {
+        margin-left: 10px;
+      }
+      &__image {
+        @include wh(60px, 60px);
+        border: 5px solid gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+      }
+      &__title {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      &__nickname {
+        font-size: 12px;
+        margin-bottom: 7px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      &__price {
+        font-size: 12px;
+        font-weight: bold;
+      }
+      &__button {
+        margin-left: auto;
+        padding-left: 10px;
+        border-left: 1px solid #efefef;
+        button {
+          @include color($default-blue, white);
+          height: 30px;
+          font-size: 12px;
+          line-height: 1px;
+        }
+      }
+    }
+  }
   &__hashtags {
     @include wh(100%, auto);
     margin-bottom: 30px;
@@ -477,7 +568,8 @@
   &__action {
     @include wh(100%, 30px);
     margin: 0 0 20px 10px;
-    :hover {
+    display: flex;
+    .fa:hover {
       color: #EDC500;
     }
   }

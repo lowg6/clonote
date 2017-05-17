@@ -1,11 +1,11 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :index_hashtag]
   before_action :set_note_tags_to_gon, only: [:edit]
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   
   def index
-    @notes = Note.all
+    @notes = Note.includes(:user).where(is_draft: false).order('created_at DESC')
     @tags = ActsAsTaggableOn::Tag
   end
 
@@ -15,10 +15,11 @@ class NotesController < ApplicationController
         redirect_to root_path
       end
     end
-
+  
     @user = @note.user
     @comment = @note.comments.new
     @comments = @note.comments.includes(:user).order('created_at ASC')
+    @is_purchased = (current_user.purchases.where('category = ? AND object_id = ?', 0, @note.id).count > 0 ? true : false) if user_signed_in?
   end
 
   def new
@@ -49,7 +50,7 @@ class NotesController < ApplicationController
   end
 
   def index_hashtag
-    @notes = Note.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+    @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
   end
 
   private
@@ -59,7 +60,7 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list)
+    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list, :magazine_id)
   end
 
   def set_note_tags_to_gon

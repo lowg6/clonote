@@ -1,5 +1,6 @@
 class MagazinesController < ApplicationController
   before_action :set_magazine, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @magazines = current_user.magazines.order('created_at DESC')
@@ -13,6 +14,7 @@ class MagazinesController < ApplicationController
     end
 
     @user = @magazine.user
+    @notes = @magazine.notes.where(is_draft: false).order('created_at DESC')
   end
 
   def new
@@ -35,7 +37,7 @@ class MagazinesController < ApplicationController
 
   def destroy
     @magazine.destroy
-    redirect_to magazines_url
+    redirect_to magazines_path
   end
 
   private
@@ -45,6 +47,6 @@ class MagazinesController < ApplicationController
   end
 
   def magazine_params
-    params.require(:magazine).permit(:title, :description, :header_image, :price, :is_public).merge(user_id: current_user.id)
+    params.require(:magazine).permit(:title, :description, :header_image, :price, :is_public)
   end
 end
