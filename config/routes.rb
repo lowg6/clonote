@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :notes
   resources :comments, only: :create
+  resources :purchases, only: [:index, :new, :create]
   resources :users, param: :noteid, path: '/' do
     member do
      get :following, :followers, :favorite
