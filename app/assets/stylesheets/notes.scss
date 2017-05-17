@@ -147,7 +147,7 @@
 }
 
 .category-tabs {
-  color: #222;
+  color: black;
   font-size: 13px;
   float: left;
   li {
@@ -156,7 +156,7 @@
     list-style: none;
     float: left;
     &:hover {
-      border-bottom: 2px solid #222;
+      border-bottom: 2px solid black;
     }
   }
 }
@@ -271,7 +271,7 @@
   &__buttons {
     @include pos(absolute, 6px, 15px, auto, auto);
     input, button {
-      @include color(white, #222);
+      @include color(white, black);
       height: 35px;
       border: 1px solid #D9D9D9;
     }
@@ -463,6 +463,89 @@
     margin-bottom: 50px;
     word-break: break-all;
   }
+  &__paywall {
+    text-align: center;
+    margin: 35px 0;
+    padding: 20px 80px;
+    border: 3px solid #e1e5e7;
+    .paywall-text {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .paywall-count {
+      font-size: 11px;
+      color: #aaa;
+    }
+    .paywall-text-guide {
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 30px;
+      &:before {
+        content: "";
+        display: block;
+        border-top: solid 1px #efefef;
+        width: 100%;
+        height: 1px;
+        margin-bottom: -7px;
+      }
+      span {
+        padding: 0 20px;
+        background-color: white;
+      }
+    }
+    .paywall-buy-box {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 20px 0 10px;
+      border: 1px solid #efefef;
+      background: #f8f9fa;
+      text-align: left;
+      &__info {
+        margin-left: 10px;
+      }
+      &__image {
+        @include wh(60px, 60px);
+        border: 5px solid gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+      }
+      &__title {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      &__nickname {
+        font-size: 12px;
+        margin-bottom: 7px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      &__price {
+        font-size: 12px;
+        font-weight: bold;
+      }
+      &__button {
+        margin-left: auto;
+        padding-left: 10px;
+        border-left: 1px solid #efefef;
+        button {
+          @include color($default-blue, white);
+          height: 30px;
+          font-size: 12px;
+          line-height: 1px;
+        }
+      }
+    }
+  }
   &__hashtags {
     @include wh(100%, auto);
     margin-bottom: 30px;
@@ -486,7 +569,7 @@
     @include wh(100%, 30px);
     margin: 0 0 20px 10px;
     display: flex;
-    :hover {
+    .fa:hover {
       color: #EDC500;
     }
   }
