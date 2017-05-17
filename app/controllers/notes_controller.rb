@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :index_hashtag]
   before_action :set_note_tags_to_gon, only: [:edit]
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   

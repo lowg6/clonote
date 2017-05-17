@@ -1,5 +1,6 @@
 class MagazinesController < ApplicationController
   before_action :set_magazine, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @magazines = current_user.magazines.order('created_at DESC')
