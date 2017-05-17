@@ -15,10 +15,11 @@ class NotesController < ApplicationController
         redirect_to root_path
       end
     end
-
+  
     @user = @note.user
     @comment = @note.comments.new
     @comments = @note.comments.includes(:user).order('created_at ASC')
+    @is_purchased = (current_user.purchases.where('category = ? AND object_id = ?', 0, @note.id).count > 0 ? true : false) if user_signed_in?
   end
 
   def new
