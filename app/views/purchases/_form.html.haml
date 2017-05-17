@@ -1,0 +1,35 @@
+.note-header
+  .note-header__logo
+    = link_to root_path do
+      = image_tag 'clonote_logo.svg'
+.purchase-container-wrapper
+  .purchase-container__paywall
+    %p.paywall-text
+      購入画面
+    .paywall-buy-box
+      .paywall-buy-box__info
+        .paywall-buy-box__title
+          タイトル
+          %p
+            = object.title
+        .paywall-buy-box__nickname
+          ユーザー
+          %p
+            = object.user.nickname
+        .paywall-buy-box__price
+          価格
+          %p
+            = "#{object.price}円"
+        .paywall-buy-box__user-cash
+          現在の残高
+          %p
+            = "#{current_user.cash}円"
+    - if current_user.cash < object.price
+      %p.cant-purchase
+        残高が不足しています
+    - else
+      .purchase-button
+        = f.hidden_field :object_id, value: object.id
+        = f.hidden_field :category, value: params[:category]
+        = f.hidden_field :price, value: object.price
+        = f.submit '購入'
