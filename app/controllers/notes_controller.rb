@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   
   def index
-    @notes = Note.all
+    @notes = Note.includes(:user).where(is_draft: false).order('created_at DESC')
     @tags = ActsAsTaggableOn::Tag
   end
 
@@ -49,7 +49,7 @@ class NotesController < ApplicationController
   end
 
   def index_hashtag
-    @notes = Note.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+    @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
   end
 
   private

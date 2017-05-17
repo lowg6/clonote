@@ -13,6 +13,7 @@ class MagazinesController < ApplicationController
     end
 
     @user = @magazine.user
+    @notes = @magazine.notes.where(is_draft: false).order('created_at DESC')
   end
 
   def new
