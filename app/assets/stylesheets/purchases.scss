@@ -1,0 +1,93 @@
+@import 'mixin';
+
+.purchase-container-wrapper {
+  @include wh(580px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.purchase-container {
+  @include wh(100%, 100%);
+  background-color: white;
+  padding-bottom: 20px;
+  &__paywall {
+    text-align: center;
+    margin: 35px 0;
+    padding: 20px 80px;
+    border: 3px solid #e1e5e7;
+    .paywall-text {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .paywall-buy-box {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 20px 0 10px;
+      border: 1px solid #efefef;
+      background: #f8f9fa;
+      text-align: left;
+      &__info {
+        margin-left: 10px;
+      }
+      &__image {
+        @include wh(60px, 60px);
+        border: 5px solid gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+      }
+      &__title {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 20px;
+        p {
+          font-weight: initial;
+          padding-top: 10px;
+        }
+      }
+      &__nickname {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 20px;
+        p {
+          font-weight: initial;
+          padding-top: 10px;
+        }
+      }
+      &__price {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 20px;
+        p {
+          font-weight: initial;
+          padding-top: 10px;
+        }
+      }
+      &__user-cash {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+        p {
+          font-weight: initial;
+          padding-top: 10px;
+        }
+      }
+    }
+    .cant-purchase {
+      color: red;
+      font-weight: bold;
+      margin: 20px 0 10px;
+    }
+    .purchase-button {
+      input {
+        @include color($default-blue, white);
+        font-size: 15px;
+        padding: 8px 50px;
+      }
+    }
+  }
+}
