@@ -5,7 +5,7 @@
   - if @user.header_image.url
     .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
   .user-header__inner-center
-    - if user_signed_in? && @user.image.url
+    - if @user.image.url
       .user-profile-image{ style: "background-image: url('#{@user.image}')" }
     .user-profile-content
       %span.user-profile-content--username
@@ -27,4 +27,5 @@
       = link_to '/' do
         %li マガジン
 .user-container
+  = render 'notes/note_list', notes: @notes
 = render 'layouts/footer'

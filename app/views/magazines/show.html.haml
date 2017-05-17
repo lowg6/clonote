@@ -5,15 +5,15 @@
 .magazine-show-container
   .magazine-show-container-wrapper
     .magazine-show-container__main-column
-      - @magazine.notes.each do |note|
+      - @notes.each do |note|
         .magazine-show-container__note-content
           .magazine-show-container__user-name
-            - if current_user.image.url
-              = link_to user_path(current_user.noteid) do
-                .magazine-show-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+            - if @user.image.url
+              = link_to user_path(@user.noteid) do
+                .magazine-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
             .magazine-show-container__user-profile
               %p{ style: 'font-weight: bold;' }
-                = link_to current_user.nickname, user_path(current_user.noteid)
+                = link_to @user.nickname, user_path(@user.noteid)
               %p{ style: 'color: #a1a6a9; font-size: 9px;' }
                 = note.created_at_jp
           - if note.header_image.url

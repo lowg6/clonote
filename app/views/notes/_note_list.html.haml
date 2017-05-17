@@ -5,12 +5,12 @@
         = link_to note_path(note) do
           .note-list-container__header-image{ style: "background-image: url('#{note.header_image}')" }
       .note-list-container__user-name
-        - if current_user.image.url
-          = link_to user_path(current_user.noteid) do
-            .note-list-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+        - if note.user.image.url
+          = link_to user_path(note.user.noteid) do
+            .note-list-container__profile-image{ style: "background-image: url('#{note.user.image}')" }
         .note-list-container__profile
           %p{ style: 'font-weight: bold;' }
-            = link_to current_user.nickname, user_path(current_user.noteid)
+            = link_to note.user.nickname, user_path(note.user.noteid)
           %p{ style: 'color: #a1a6a9; font-size: 9px;' }
             = note.created_at_jp
         - if note.price > 0
@@ -22,10 +22,8 @@
       .note-list-container__body
         = note.body.truncate(200)
       .note-list-container__action
-        .note-list-container__favorite-action{ style: "#{current_user.favorite?(note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
+        .note-list-container__favorite-action{ style: "#{note.user.favorite?(note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
           = render 'favorites/favorite_button', note: note
-          %p{ style: 'margin-left: 10px;' }
-            = note.favorites.count
         .note-list-container__comment-action
           = link_to "#{note_path(note)}#comment" do
             %span
