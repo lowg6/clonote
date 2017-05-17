@@ -196,7 +196,7 @@
 }
 
 .magazine-show-container {
-  @include wh(100%, 100vh);
+  @include wh(100%, auto);
   background-color: white;
   padding-bottom: 50px;
   &__main-column {

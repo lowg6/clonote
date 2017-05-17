@@ -34,7 +34,7 @@
 }
 
 .user-category-tabs {
-  color: #222;
+  color: black;
   font-size: 13px;
   float: left;
   li {
@@ -42,7 +42,7 @@
     list-style: none;
     float: left;
     &:hover {
-      border-bottom: 2px solid #222;
+      border-bottom: 2px solid black;
     }
   }
 }
@@ -99,7 +99,7 @@
     color: #898D8C;
     cursor: pointer;
     a {
-      color: #222;
+      color: black;
       font-weight: bold;
     }
     &:hover a {
@@ -110,7 +110,7 @@
 
 .user-edit-header {
   &__image-overlay {
-    @include color(#222, white);
+    @include color(black, white);
     height: 300px;
     opacity: .8;
     line-height: 330px;
@@ -137,7 +137,7 @@
   display: flex;
   justify-content: center;
   &__image-overlay {
-    @include color(#222, white);
+    @include color(black, white);
     height: 110px;
     margin-top: 10px;
     opacity: .8;
