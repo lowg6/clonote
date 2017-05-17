@@ -1,4 +1,10 @@
-- if current_user.favorite?(note)
-  = render 'favorites/destroy', note: note
+- if user_signed_in?
+  - if current_user.favorite?(note)
+    = render 'favorites/destroy', note: note
+  - else
+    = render 'favorites/create', note: note
 - else
-  = render 'favorites/create', note: note
+  = link_to new_user_session_path do
+    .fa.fa-star-o.fa-lg
+%p{ style: 'margin-left: 10px;' }
+  = note.favorites.count
