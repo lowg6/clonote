@@ -1,16 +1,15 @@
 .main-header
   = render 'notes/main_header'
 .magazine-show-header
-  .magazine-show-header__header-image{ style: "background-image: url('#{@magazine.header_image}')" }
+  .magazine-show-header__header-image{ style: "background-image: url('#{@magazine.header_image.url ? @magazine.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
 .magazine-show-container
   .magazine-show-container-wrapper
     .magazine-show-container__main-column
       - @notes.each do |note|
         .magazine-show-container__note-content
           .magazine-show-container__user-name
-            - if @user.image.url
-              = link_to user_path(@user.noteid) do
-                .magazine-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
+            = link_to user_path(@user.noteid) do
+              .magazine-show-container__profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
             .magazine-show-container__user-profile
               %p{ style: 'font-weight: bold;' }
                 = link_to @user.nickname, user_path(@user.noteid)

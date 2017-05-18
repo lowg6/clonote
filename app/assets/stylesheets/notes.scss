@@ -21,6 +21,11 @@
     position: relative;
     align-items: center;
     display: flex;
+    .new-note-button {
+      @include pos(absolute, 12px, 0, auto, auto);
+      @include color($default-blue, white);
+      height: 30px;
+    }
   }
   &__inner-bottom {
     @include wh(940px, 45px);
@@ -28,7 +33,7 @@
     border-top: 1px solid rgba(0,0,0,0.05);
   }
   &__sign-in-buttons {
-    @include pos(absolute, 20px, 125px, auto, auto);
+    @include pos(absolute, 20px, 40px, auto, auto);
     color: $default-blue;
   }
   &__current-user-image {
@@ -41,6 +46,13 @@
     border-radius: 30px;
     margin: 5px;
     cursor: pointer;
+  }
+  &__input {
+    @include pos(absolute, auto, 182px, auto, auto);
+    .search-box-icon {
+      @include pos(absolute, 6px, 10px, auto, auto);
+      color: #a1a6a9;
+    }
   }
 }
 
@@ -72,6 +84,47 @@
       &:hover {
         color: $default-blue;
       }
+    }
+  }
+}
+
+#search-box-input {
+  width: 160px;
+  border: 1px solid #ececec;
+  border-radius: 100px !important;
+  font-size: 11px;
+  padding: 5px 30px 5px 10px
+}
+
+#search-result-box {
+  @include pos(absolute, auto, auto, auto, auto);
+  margin-top: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  z-index: 1;
+  li {
+    @include wh(178px, auto);
+    padding: 5px 10px;
+    display: -webkit-box;
+    &:hover {
+      background-color: #f8f9fa;
+    }
+    #search-result-box {
+      border: 1px solid #ececec;
+    }
+    .image {
+      @include wh(30px, 30px);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 30px;
+      border: 1px solid #F7F9F9;
+      border-radius: 30px;
+    }
+    .text {
+      line-height: 30px;
+      margin-left: 10px;
+      overflow: hidden;
     }
   }
 }
@@ -151,8 +204,7 @@
   font-size: 13px;
   float: left;
   li {
-    @include pm(15px 13px, 0);
-    padding: 15px 20px;
+    @include pm(15px 17px, 0);
     list-style: none;
     float: left;
     &:hover {
@@ -518,14 +570,12 @@
         font-weight: bold;
         font-size: 14px;
         margin-bottom: 5px;
-        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
       &__nickname {
         font-size: 12px;
         margin-bottom: 7px;
-        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
@@ -625,6 +675,7 @@
     @include wh(100px, 100px);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
   }
   &__info-container {
     @include pos(absolute, 30px, auto, auto, 125px);
@@ -639,7 +690,7 @@
     font-size: 12px;
   }
   &__info-follow-button {
-    @include pos(absolute, 65px, 5px, auto, auto);
+    margin-top: 80px;
   }
   &__comment {
     @include wh(100%, auto);

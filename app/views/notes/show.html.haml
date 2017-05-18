@@ -8,9 +8,8 @@
       - if @note.header_image.url
         .note-show-container__header-image{ style: "background-image: url('#{@note.header_image}')" }
       .note-show-container__user-name
-        - if @user.image.url
-          = link_to user_path(@user.noteid) do
-            .note-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
+        = link_to user_path(@user.noteid) do
+          .note-show-container__profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
         .note-show-container__profile
           %p{ style: 'font-weight: bold;' }
             = link_to @user.nickname, user_path(@user.noteid)
@@ -84,14 +83,13 @@
                 .fa.fa-chevron-right
       .note-show-container__info
         .note-show-container__info-profile-wrapper
-          - if @user.image.url
-            = link_to user_path(@user.noteid) do
-              .note-show-container__info-profile-image{ style: "background-image: url('#{@user.image}')" }
+          = link_to user_path(@user.noteid) do
+            .note-show-container__info-profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
           .note-show-container__info-container
             .note-show-container__info-user-name
               = link_to @user.nickname, user_path(@user.noteid)
             .note-show-container__info-description
-              = @user.description.truncate(100)
+              = @user.description
             - if user_signed_in?
               - unless current_user?(@user)
                 .note-show-container__info-follow-button
@@ -106,9 +104,8 @@
         %ul.note-show-container__comment-list
           - @comments.each do |comment|
             %li
-              - if comment.user.image.url
-                = link_to user_path(comment.user.noteid) do
-                  .comment-profile-image{ style: "background-image: url('#{comment.user.image}')" }
+              = link_to user_path(comment.user.noteid) do
+                .comment-profile-image{ style: "background-image: url('#{comment.user.image.url ? comment.user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
               .comment-container
                 %p.comment-container__header
                   = link_to comment.user.nickname, user_path(comment.user.noteid), style: 'font-weight: bold'

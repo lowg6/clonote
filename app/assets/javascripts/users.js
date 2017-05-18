@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
 
   $('input[type="file"]').on('change', function(e) {
     var file = e.target.files[0];
-        
+    
     if (file.type.indexOf('image') < 0) {
       return false;
     }
@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function() {
         var $preview_class = null;
         var parent_class = $this.parent().attr('class');
 
-        if (parent_class == 'user-edit-header') {
+        if (parent_class == 'user-edit-header__image-overlay') {
           $preview_class = $('.user-edit-header__image-exists');
         } else if (parent_class == 'user-edit-container__image-overlay') {
           $preview_class = $('.user-edit-container__image');

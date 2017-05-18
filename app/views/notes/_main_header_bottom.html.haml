@@ -1,0 +1,21 @@
+.main-header__inner-bottom
+  %ul.category-tabs
+    = link_to root_path do
+      %li トップ
+    = link_to '/recommend' do
+      %li おすすめ
+    = link_to '/category/マンガ' do
+      %li マンガ
+    = link_to '/category/コラム' do
+      %li コラム
+    = link_to '/category/小説' do
+      %li 小説
+    = link_to '/category/写真' do
+      %li 写真
+    = link_to '/category/音楽' do
+      %li 音楽
+  %ul.trend-hashtags
+    - tags.most_used(5).each do |tag|
+      = link_to "/hashtag/#{tag}" do
+        %li
+          = "##{tag}"

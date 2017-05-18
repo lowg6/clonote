@@ -4,10 +4,11 @@
   .sign-in-container__title
     clonoteに登録する
   = form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: 'new-user-form' } do |f|
-    = devise_error_messages!    
+    = devise_error_messages!
+    = f.hidden_field :nickname, value: 'New User'
+    = f.hidden_field :noteid, value: ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(10).join
     .input-field
       = f.email_field :email, placeholder: "メールアドレス", autofocus: true
-      = f.hidden_field :nickname, value: 'New User'
     .input-field
       = f.password_field :password, placeholder: "パスワード", autocomplete: "off"
     .input-actions

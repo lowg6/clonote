@@ -1,14 +1,12 @@
 .main-header__inner-top
   = link_to root_path do
     = image_tag 'clonote_logo.svg'
-  .main-header__sign-in-buttons
-    - unless user_signed_in?
-      = link_to 'ログイン', new_user_session_path
-      %span
-        \/
-      = link_to '新規登録', new_user_registration_path
-  - if user_signed_in? && current_user.image.url
-    .main-header__current-user-image{ style: "background-image: url('#{current_user.image}')" }
+  .main-header__input
+    %input#search-box-input{ placeholder: 'ユーザー・ハッシュタグを検索', autocomplete: 'off' }
+    .search-box-icon.fa.fa-search
+    %ul#search-result-box
+  - if user_signed_in?
+    .main-header__current-user-image{ style: "background-image: url('#{current_user.image.url ? current_user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
       .user-tooltip
         = link_to user_path(current_user.noteid) do
           .user-tooltip__mypage
@@ -32,6 +30,13 @@
           = link_to destroy_user_session_path do
             %li
               ログアウト
-  = link_to new_note_path do
-    %button.new-note-button
-      ノートを投稿
+    = link_to new_note_path do
+      %button.new-note-button
+        ノートを投稿          
+  - else
+    .main-header__sign-in-buttons
+      = link_to 'ログイン', new_user_session_path
+      %span
+        \/
+      = link_to '新規登録', new_user_registration_path
+    

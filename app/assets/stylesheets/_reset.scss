@@ -54,6 +54,9 @@
     border-collapse: collapse;
     border-spacing: 0;
   }
+  input {
+    outline: none;
+  }
   button, input[type="submit"], input[type="button"] {
     font-size: 14px;
     padding: 0 12px;
