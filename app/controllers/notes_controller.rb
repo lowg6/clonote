@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :index_hashtag]
+  before_action :set_tags, only: [:index, :index_recommend, :index_category, :set_search_result_users_hashtags]
+  before_action :authenticate_user!, except: [:index, :show, :index_recommend, :index_category, :index_hashtag, :set_search_result_users_hashtags]
   before_action :set_note_tags_to_gon, only: [:edit]
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   
   def index
     @notes = Note.includes(:user).where(is_draft: false).order('created_at DESC')
-    @tags = ActsAsTaggableOn::Tag
   end
 
   def show
@@ -47,16 +47,34 @@ class NotesController < ApplicationController
 
   def index_draft
     @notes = current_user.notes.where(is_draft: true).order('created_at DESC')
+    @user = current_user
+  end
+
+  def index_recommend
+    @notes = Note.includes(:user).joins(:favorites).group('favorites.note_id').order('count(favorites.note_id) DESC')
   end
 
   def index_hashtag
     @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
   end
 
+  def index_category
+    @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+  end
+
+  def set_search_result_users_hashtags
+    @search_result_users = User.where('nickname LIKE(?)', "#{params[:keyword]}%")
+    @search_result_hashtags = @tags.where('name LIKE(?)', "#{params[:keyword]}%")
+  end
+
   private
   
   def set_note
     @note = Note.find(params[:id])
+  end
+
+  def set_tags
+    @tags = ActsAsTaggableOn::Tag
   end
 
   def note_params
