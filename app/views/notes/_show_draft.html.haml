@@ -3,9 +3,8 @@
     - if @note.header_image.url
       .note-show-container__header-image{ style: "background-image: url('#{@note.header_image}')" }
     .note-show-container__user-name
-      - if @user.image.url
-        = link_to user_path(@user.noteid) do
-          .note-show-container__profile-image{ style: "background-image: url('#{@user.image}')" }
+      = link_to user_path(@user.noteid) do
+        .note-show-container__profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
       .note-show-container__profile
         %p{ style: 'font-weight: bold;' }
           = link_to @user.nickname, user_path(@user.noteid)

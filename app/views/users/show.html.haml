@@ -2,11 +2,9 @@
   .main-header
     = render 'notes/main_header'
   .user-header__inner-max-width-border
-  - if @user.header_image.url
-    .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image}')" }
+  .user-header__inner-header-image{ style: "background-image: url('#{@user.header_image.url ? @user.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
   .user-header__inner-center
-    - if @user.image.url
-      .user-profile-image{ style: "background-image: url('#{@user.image}')" }
+    .user-profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
     .user-profile-content
       %span.user-profile-content--username
         = @user.nickname
@@ -15,11 +13,12 @@
       = render 'relationships/follow_stats', user: @user
       - if current_user?(@user)
         = link_to edit_user_path do
-          %button.setting-button
+          %button.user-profile-content__setting-button
             設定
       - else
         - if user_signed_in?
-          = render 'relationships/follow_button', user: @user
+          .user-profile-content__follow-button
+            = render 'relationships/follow_button', user: @user
   .user-header__inner-bottom
     %ul.user-category-tabs
       = link_to user_path(@user.noteid) do

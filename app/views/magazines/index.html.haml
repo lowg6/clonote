@@ -20,7 +20,7 @@
               = magazine.description.truncate(65)
         .magazine-content__user
           = link_to user_path(magazine.user.noteid) do
-            .magazine-content__user-image{ style: "background-image: url('#{magazine.user.image}')" }
+            .magazine-content__user-image{ style: "background-image: url('#{magazine.user.image.url ? magazine.user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
           = link_to user_path(magazine.user.noteid) do
             %p
               = magazine.user.nickname.truncate(8)

@@ -5,9 +5,8 @@
         = link_to note_path(note) do
           .note-list-container__header-image{ style: "background-image: url('#{note.header_image}')" }
       .note-list-container__user-name
-        - if note.user.image.url
-          = link_to user_path(note.user.noteid) do
-            .note-list-container__profile-image{ style: "background-image: url('#{note.user.image}')" }
+        = link_to user_path(note.user.noteid) do
+          .note-list-container__profile-image{ style: "background-image: url('#{note.user.image.url ? note.user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
         .note-list-container__profile
           %p{ style: 'font-weight: bold;' }
             = link_to note.user.nickname, user_path(note.user.noteid)

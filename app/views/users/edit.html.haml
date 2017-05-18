@@ -1,21 +1,15 @@
 = form_for @user, url: "/#{@user.noteid}", method: :patch do |f|
-  %label.user-edit-header
-    = f.file_field :header_image, style: "display: none;"
-    .user-edit-header__image-overlay
-      - if @user.header_image.url
-        .user-edit-header__image-exists{ style: "background-image: url('#{@user.header_image}')" }
-          .fa.fa-camera.fa-2x
-            %p
-              ヘッダー画像を変更
-      - else
-        .user-edit-header__image-not-exists
-          .fa.fa-camera.fa-2x
-            %p
-              ヘッダー画像を追加
+  .user-edit-header
+    %label.user-edit-header__image-overlay
+      = f.file_field :header_image, style: "display: none;"
+      .user-edit-header__image-exists{ style: "background-image: url('#{@user.header_image.url ? @user.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
+        .fa.fa-camera.fa-2x
+          %p
+            ヘッダー画像を変更
   .user-edit-container
     %label.user-edit-container__image-overlay
       = f.file_field :image, style: "display: none;"
-      .user-edit-container__image{ style: "background-image: url('#{@user.image}')" }
+      .user-edit-container__image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
         .fa.fa-camera.fa-2x
     .user-edit-container__inner
       .user-edit-container__nickname

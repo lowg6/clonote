@@ -1,0 +1,11 @@
+- search_result_hashtags.each do |hashtag|
+  = link_to "/hashtag/#{hashtag.name}" do
+    %li
+      .text
+        = "##{hashtag.name}"
+- search_result_users.each do |user|
+  = link_to user_path(user.noteid) do
+    %li
+      .image{ style: "background-image: url('#{user.image.url ? user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
+      .text
+        = user.nickname.truncate(10)

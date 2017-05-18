@@ -8,12 +8,11 @@
           = link_to note_path(note) do
             .draft-container__header-image{ style: "background-image: url('#{note.header_image}')" }
         .draft-container__user-name
-          - if current_user.image.url
-            = link_to user_path(current_user.noteid) do
-              .draft-container__profile-image{ style: "background-image: url('#{current_user.image}')" }
+          = link_to user_path(@user.noteid) do
+            .draft-container__profile-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
           .draft-container__profile
             %p{ style: 'font-weight: bold;' }
-              = link_to current_user.nickname, user_path(current_user.noteid)
+              = link_to @user.nickname, user_path(@user.noteid)
             %p{ style: 'color: #a1a6a9; font-size: 9px;' }
               = note.created_at_jp
           #likes-button-label
