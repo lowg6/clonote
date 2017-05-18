@@ -1,0 +1,13 @@
+@import 'mixin';
+
+#follow-button {
+  @include color(white, $default-blue);
+  height: 30px;
+  border: 1px solid $default-blue !important;
+}
+
+#unfollow-button {
+  @include color($default-blue, white);
+  height: 30px;
+  border: 1px solid $default-blue !important;
+}

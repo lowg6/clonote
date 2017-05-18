@@ -65,33 +65,21 @@
   &--description {
     line-height: normal;
   }
+  &__setting-button {
+    @include pos(absolute, 24px, 0, auto, auto);
+    @include color($default-blue, white);
+    height: 30px;
+  }
+  &__follow-button {
+    input {
+      @include pos(absolute, 24px, 0, auto, auto);
+    }
+  }
 }
 
 .user-container {
   @include wh(100%, auto);
   background-color: #F7F9F9;
-}
-
-.new-note-button {
-  @include pos(absolute, 12px, 0, auto, auto);
-  @include color($default-blue, white);
-  height: 30px;
-}
-
-.setting-button {
-  @include pos(absolute, 24px, 0, auto, auto);
-  @include color($default-blue, white);
-  height: 30px;
-}
-
-.follow-button {
-  @extend .setting-button;
-  @include color(white, $default-blue);
-  border: 1px solid $default-blue !important;
-}
-
-.unfollow-button {
-  @extend .setting-button;
 }
 
 .follow-stats {
@@ -122,12 +110,9 @@
       font-weight: bold;
     }
   }
-  &__image-exists {
+  &__image {
     height: 100%;
     background-position: center;
-  }
-  &__image-not-exists {
-    height: 100%;
   }
 }
 
