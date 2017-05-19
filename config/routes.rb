@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'notes#index'
 
+  get '/favorites', to: 'favorites#index'
   get '/drafts', to: 'notes#index_draft'
   get '/recommend', to: 'notes#index_recommend'
   get '/hashtag/:id', to: 'notes#index_hashtag'

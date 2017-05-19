@@ -92,11 +92,24 @@
             .note-show-container__info-user-name
               = link_to @user.nickname, user_path(@user.noteid)
             .note-show-container__info-description
-              = @user.description
+              = @user.description.truncate(20)
             - if user_signed_in?
               - unless current_user?(@user)
                 .note-show-container__info-follow-button
                   = render 'relationships/follow_button', user: @user
+        - if @magazines.count > 0
+          .note-show-container__info-profile-wrapper
+            = link_to magazine_path(@magazines.first) do
+              .note-show-container__info-profile-image{ style: "background-image: url('#{@magazines.first.header_image.url ? @magazines.first.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
+            .note-show-container__info-container
+              .note-show-container__info-user-name
+                = link_to @magazines.first.title, magazine_path(@magazines.first)
+              .note-show-container__info-description
+                = @magazines.first.description.truncate(20)
+              - if user_signed_in?
+                - unless current_user?(@user)
+                  .note-show-container__info-follow-button
+                    = render 'magazine_relationships/follow_button', magazine: @magazines.first
       .note-show-container__comment
         .note-show-container__comment-count
           %span

@@ -22,5 +22,6 @@
         = link_to user_path(magazine.user.noteid) do
           %p
             = magazine.user.nickname.truncate(8)
-        .magazine-content__follow-button
-          = render 'magazine_relationships/follow_button', magazine: magazine
+        - unless current_user?(magazine.user)
+          .magazine-content__follow-button
+            = render 'magazine_relationships/follow_button', magazine: magazine

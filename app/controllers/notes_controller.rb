@@ -1,12 +1,13 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_notes, only: [:index, :index_recommend, :index_category, :index_hashtag]
   before_action :set_tags, only: [:index, :index_recommend, :index_category, :set_search_result_users_hashtags]
   before_action :authenticate_user!, except: [:index, :show, :index_recommend, :index_category, :index_hashtag, :set_search_result_users_hashtags]
   before_action :set_note_tags_to_gon, only: [:edit]
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   
   def index
-    @notes = Note.includes(:user).where(is_draft: false).order('created_at DESC')
+    @notes = @notes.where(is_draft: false).order('created_at DESC')
   end
 
   def show
@@ -20,6 +21,7 @@ class NotesController < ApplicationController
     @note.save
 
     @user = @note.user
+    @magazines = @note.magazines.where(user_id: @user.id)
     @comment = @note.comments.new
     @comments = @note.comments.includes(:user).order('created_at ASC')
     @is_purchased = (current_user.purchases.where('category = ? AND object_id = ?', 0, @note.id).count > 0 ? true : false) if user_signed_in?
@@ -27,6 +29,7 @@ class NotesController < ApplicationController
 
   def new
     @note = current_user.notes.new
+    @magazine = current_user.notes.new
   end
 
   def edit
@@ -54,15 +57,15 @@ class NotesController < ApplicationController
   end
 
   def index_recommend
-    @notes = Note.includes(:user).joins(:favorites).group('favorites.note_id').order('count(favorites.note_id) DESC').order('views DESC')
+    @notes = @notes.joins(:favorites).group('favorites.note_id').order('count(favorites.note_id) DESC').order('views DESC')
   end
 
   def index_hashtag
-    @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+    @notes = @notes.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
   end
 
   def index_category
-    @notes = Note.includes(:user).tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
+    @notes = @notes.tagged_with(params[:id]).where(is_draft: false).order('created_at DESC')
   end
 
   def set_search_result_users_hashtags
@@ -76,12 +79,16 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def set_notes
+    @notes = Note.includes(:user)
+  end
+
   def set_tags
     @tags = ActsAsTaggableOn::Tag
   end
 
   def note_params
-    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list, :magazine_id)
+    params.require(:note).permit(:title, :body, :price, :header_image, :is_draft, :tag_list, magazine_ids: [])
   end
 
   def set_note_tags_to_gon

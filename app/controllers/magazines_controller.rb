@@ -3,7 +3,7 @@ class MagazinesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @magazines = current_user.magazines.order('created_at DESC')
+    @magazines = current_user.magazines.order('created_at DESC') + current_user.follow_magazines
   end
 
   def show

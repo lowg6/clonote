@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519044214) do
+ActiveRecord::Schema.define(version: 20170519080336) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170519044214) do
     t.integer  "user_id"
   end
 
+  create_table "note_magazines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "note_id"
+    t.integer  "magazine_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["magazine_id"], name: "index_note_magazines_on_magazine_id", using: :btree
+    t.index ["note_id"], name: "index_note_magazines_on_note_id", using: :btree
+  end
+
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "body",         limit: 65535
@@ -60,8 +69,7 @@ ActiveRecord::Schema.define(version: 20170519044214) do
     t.integer  "price",                      default: 0
     t.integer  "user_id"
     t.boolean  "is_draft",                   default: false, null: false
-    t.integer  "magazine_id"
-    t.integer  "views",                                      null: false
+    t.integer  "views",                      default: 0,     null: false
   end
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -131,4 +139,6 @@ ActiveRecord::Schema.define(version: 20170519044214) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "note_magazines", "magazines"
+  add_foreign_key "note_magazines", "notes"
 end
