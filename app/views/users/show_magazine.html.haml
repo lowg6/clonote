@@ -26,5 +26,5 @@
       = link_to magazines_user_path(@user.noteid) do
         %li マガジン
 .user-container
-  = render 'notes/note_list', notes: @notes
+  = render 'magazines/magazine_list', magazines: @magazines, user: @user
 = render 'layouts/footer'

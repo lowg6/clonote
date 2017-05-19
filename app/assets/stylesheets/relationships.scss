@@ -2,12 +2,12 @@
 
 #follow-button {
   @include color(white, $default-blue);
-  height: 30px;
   border: 1px solid $default-blue !important;
+  padding: 5px 10px;
 }
 
 #unfollow-button {
   @include color($default-blue, white);
-  height: 30px;
   border: 1px solid $default-blue !important;
+  padding: 5px 10px;
 }

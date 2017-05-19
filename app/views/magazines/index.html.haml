@@ -1,29 +1,5 @@
 .main-header
   = render 'notes/main_header'
 .magazine-container
-  .magazine-container-wrapper
-    = link_to new_magazine_path do
-      .magazine-container__create-magazine
-        %p
-          マガジンを作る
-    - @magazines.each do |magazine|
-      .magazine-content
-        = link_to magazine_path(magazine) do
-          .magazine-content__title
-            %p
-              = magazine.title
-          .magazine-content__header-image{ style: "background-image: url('#{magazine.header_image}')" }
-            .magazine-content__header-overlay
-        .magazine-content__body
-          = link_to magazine_path(magazine) do
-            %p
-              = magazine.description.truncate(65)
-        .magazine-content__user
-          = link_to user_path(magazine.user.noteid) do
-            .magazine-content__user-image{ style: "background-image: url('#{magazine.user.image.url ? magazine.user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
-          = link_to user_path(magazine.user.noteid) do
-            %p
-              = magazine.user.nickname.truncate(8)
-          .magazine-content__follow-button
-            = render 'relationships/follow_button', user: magazine.user
+  = render 'magazine_list', magazines: @magazines, user: current_user
 = render 'layouts/footer'

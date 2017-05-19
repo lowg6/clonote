@@ -3,11 +3,6 @@
 .magazine-container {
   background-color: #F7F9F9;
   padding-bottom: 50px;
-  .magazine-container-wrapper {
-    @include wh(580px, auto);
-    margin: 0 auto;
-    padding-top: 20px;
-  }
   &__create-magazine {
     @include wh(265px, 230px);
     margin: 10px;
@@ -24,6 +19,12 @@
       border-color: #dedede;
     }
   }
+}
+
+.magazine-container-wrapper {
+  @include wh(580px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
 }
 
 .magazine-content {

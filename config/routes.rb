@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :purchases, only: [:index, :new, :create]
   resources :users, param: :noteid, path: '/' do
     member do
-     get :following, :followers, :favorite
+     get :magazines, :following, :followers, :favorite
     end
   end
   resources :favorites, only: [:create, :destroy]

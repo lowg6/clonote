@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :magazines, :following, :followers]
   before_action :authenticate_user!, except: :show
 
   def show
@@ -12,6 +12,11 @@ class UsersController < ApplicationController
   def update
     @user.update(profile_params)
     redirect_to user_path
+  end
+
+  def magazines
+    @magazines = Magazine.includes(:user).where(user_id: @user.id)
+    render 'show_magazine'
   end
 
   def following
