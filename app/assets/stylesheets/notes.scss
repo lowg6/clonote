@@ -186,15 +186,20 @@
     display: flex;
     line-height: 45px;
     font-size: 12px;
-    justify-content: space-between;
+    position: relative;
   }
   &__favorite-action {
     display: flex;
-    :hover {
+    a:hover {
       color: #EDC500;
     }
   }
+  &__view-count {
+    margin-left: 20px;
+    color: #898D8C;
+  }
   &__comment-action {
+    @include pos(absolute, auto, 0, auto, auto);
     color: $default-blue;
   }
 }
@@ -619,9 +624,13 @@
     @include wh(100%, 30px);
     margin: 0 0 20px 10px;
     display: flex;
-    .fa:hover {
+    color: #898D8C;
+    a:hover {
       color: #EDC500;
     }
+  }
+  &__view-count {
+    margin-left: 20px;
   }
   &__popular {
     @include wh(100%, 60px);
@@ -639,6 +648,7 @@
     }
     ul {
       margin-left: 20px;
+      font-weight: bold;
     }
   }
   &__pager {

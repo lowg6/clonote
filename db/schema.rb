@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517190516) do
+ActiveRecord::Schema.define(version: 20170519044214) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170517190516) do
     t.integer  "user_id"
     t.boolean  "is_draft",                   default: false, null: false
     t.integer  "magazine_id"
+    t.integer  "views",                                      null: false
   end
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

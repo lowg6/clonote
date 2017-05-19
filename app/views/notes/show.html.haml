@@ -57,6 +57,9 @@
               = "##{tag}"
       .note-show-container__action
         = render 'favorites/favorite_button', note: @note
+        .note-show-container__view-count
+          .fa.fa-eye.fa-lg
+          = @note.views
       .note-show-container__popular
         %p
           こちらもおすすめ

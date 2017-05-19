@@ -15,7 +15,10 @@ class NotesController < ApplicationController
         redirect_to root_path
       end
     end
-  
+
+    @note.views += 1
+    @note.save
+
     @user = @note.user
     @comment = @note.comments.new
     @comments = @note.comments.includes(:user).order('created_at ASC')
@@ -51,7 +54,7 @@ class NotesController < ApplicationController
   end
 
   def index_recommend
-    @notes = Note.includes(:user).joins(:favorites).group('favorites.note_id').order('count(favorites.note_id) DESC')
+    @notes = Note.includes(:user).joins(:favorites).group('favorites.note_id').order('count(favorites.note_id) DESC').order('views DESC')
   end
 
   def index_hashtag
