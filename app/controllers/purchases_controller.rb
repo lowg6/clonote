@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   def index
     @purchases = current_user.purchases.order('created_at DESC')
+    @notes = Note.includes(:user).where('id IN (?)', @purchases.where(category: :note).pluck(:object_id))
   end
 
   def new

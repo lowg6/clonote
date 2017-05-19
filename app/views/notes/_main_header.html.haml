@@ -19,12 +19,15 @@
           = link_to magazines_path do
             %li
               マガジン
-          = link_to purchases_path do
-            %li
-              ライブラリ
           = link_to drafts_path do
             %li
               下書き
+          = link_to favorites_path do
+            %li
+              お気に入り
+          = link_to purchases_path do
+            %li
+              購入済み
         .user-tooltip__separator
         %ul.user-tooltip__user-container
           = link_to destroy_user_session_path do

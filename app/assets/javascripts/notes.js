@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click touchend', function(e) {
     if (!$(e.target).closest('.main-header__current-user-image').length) {
-      $('.user-tooltip').fadeOut();
+      $('.user-tooltip').hide();
     }
   });
   

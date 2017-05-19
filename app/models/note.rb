@@ -4,7 +4,8 @@ class Note < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favoriting_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
-  has_many :magazine
+  has_many :note_magazines, dependent: :destroy
+  has_many :magazines, through: :note_magazines
   belongs_to :user
   mount_uploader :header_image, ImageUploader
   acts_as_taggable

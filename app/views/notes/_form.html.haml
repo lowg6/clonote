@@ -54,6 +54,8 @@
               %p
                 マガジン
               .magazine-content-field
+                = f.collection_check_boxes :magazine_ids, current_user.magazines, :id, :title, include_hidden: false do |t|
+                  = t.label(class: 'magazine-content-field__checkbox') { t.check_box + t.text }
     .note-public-setting-footer
       .note-public-setting-footer__buttons
         %span{ data: { remodal: { action: 'close' } } }

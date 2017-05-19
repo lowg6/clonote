@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'notes#index'
 
+  get '/favorites', to: 'favorites#index'
   get '/drafts', to: 'notes#index_draft'
   get '/recommend', to: 'notes#index_recommend'
   get '/hashtag/:id', to: 'notes#index_hashtag'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   resources :purchases, only: [:index, :new, :create]
   resources :users, param: :noteid, path: '/' do
     member do
-     get :following, :followers, :favorite
+     get :magazines, :following, :followers, :favorite
     end
   end
   resources :favorites, only: [:create, :destroy]

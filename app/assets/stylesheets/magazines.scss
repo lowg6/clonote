@@ -3,11 +3,6 @@
 .magazine-container {
   background-color: #F7F9F9;
   padding-bottom: 50px;
-  .magazine-container-wrapper {
-    @include wh(580px, auto);
-    margin: 0 auto;
-    padding-top: 20px;
-  }
   &__create-magazine {
     @include wh(265px, 230px);
     margin: 10px;
@@ -24,6 +19,12 @@
       border-color: #dedede;
     }
   }
+}
+
+.magazine-container-wrapper {
+  @include wh(580px, auto);
+  margin: 0 auto;
+  padding-top: 20px;
 }
 
 .magazine-content {
@@ -237,14 +238,14 @@
     font-size: 12px;
     line-height: 16px; 
   }
-  &__user-title {
+  &__note-title {
     @include wh(100%, 50px);
-    margin-bottom: 1.1em;
+    margin-bottom: 0.1em;
     font-size: 25px;
   }
-  &__user-body {
+  &__note-body {
     @include wh(100%, auto);
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     word-break: break-all;
   }
   &__action {
