@@ -23,6 +23,9 @@
       .note-list-container__action
         .note-list-container__favorite-action{ style: "#{note.user.favorite?(note) ? 'color: #EDC500;' : 'color: #898D8C;'}"}
           = render 'favorites/favorite_button', note: note
+        .note-list-container__view-count
+          .fa.fa-eye.fa-lg
+          = note.views
         .note-list-container__comment-action
           = link_to "#{note_path(note)}#comment" do
             %span

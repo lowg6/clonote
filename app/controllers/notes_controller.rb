@@ -15,7 +15,10 @@ class NotesController < ApplicationController
         redirect_to root_path
       end
     end
-  
+
+    @note.views += 1
+    @note.save
+    
     @user = @note.user
     @comment = @note.comments.new
     @comments = @note.comments.includes(:user).order('created_at ASC')
