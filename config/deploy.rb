@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "clonote"
+set :repo_url, "git@github.com:Brainya/clonote.git"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 

@@ -18,3 +18,5 @@
 
 app/assets/images/clonote_logo.svg
 .env
+
+public/*

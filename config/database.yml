@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: clonote_production
-  username: clonote
-  password: <%= ENV['CLONOTE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
