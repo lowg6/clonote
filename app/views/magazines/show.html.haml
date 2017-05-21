@@ -39,9 +39,8 @@
         .magazine-description
           = @magazine.description
         .magazine-user
-          - if @user.image.url
-            = link_to user_path(@user.noteid) do
-              .magazine-user-image{ style: "background-image: url('#{@user.image}')" }
+          = link_to user_path(@user.noteid) do
+            .magazine-user-image{ style: "background-image: url('#{@user.image.url ? @user.image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_profile.png'}')" }
           %p
             = link_to user_path(@user.noteid) do
               = @user.nickname
