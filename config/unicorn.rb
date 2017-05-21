@@ -5,7 +5,7 @@ working_directory app_path
 
 timeout 30
 
-listen "#{app_path}tmp/sockets/unicorn.sock"
+listen 3000
 pid "#{app_path}/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
