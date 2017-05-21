@@ -11,9 +11,9 @@ stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 preload_app true
-# GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
+GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
 
-# check_client_connection false
+check_client_connection false
 
 run_once = true
 
