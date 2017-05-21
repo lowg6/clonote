@@ -91,8 +91,9 @@
           .note-show-container__info-container
             .note-show-container__info-user-name
               = link_to @user.nickname, user_path(@user.noteid)
-            .note-show-container__info-description
-              = @user.description.truncate(20)
+            - unless @user.description.blank?
+              .note-show-container__info-description
+                = @user.description.truncate(20)
             - if user_signed_in?
               - unless current_user?(@user)
                 .note-show-container__info-follow-button

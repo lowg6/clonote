@@ -698,7 +698,6 @@
   }
   &__info-description {
     @include wh(190px, auto);
-    overflow: hidden;
     font-size: 12px;
   }
   &__info-follow-button {
