@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
           $preview_class = $('.user-edit-container__image');
         }
         
-        $preview_class.css('background-image', `url("${e.target.result}")`);
+        $preview_class.css('background-image', e.target.result);
       };
     })(file);
     
