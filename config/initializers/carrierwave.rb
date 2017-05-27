@@ -8,5 +8,5 @@ CarrierWave.configure do |config|
       
   config.fog_public = true
   config.fog_directory = ENV['AWS_BUCKET_NAME']
-  config.fog_host = "https://#{ENV['AWS_BUCKET_NAME']}.s3.amazonaws.com"
+  config.asset_host = "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET_NAME']}"
 end
