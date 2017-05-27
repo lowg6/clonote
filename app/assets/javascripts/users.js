@@ -1,21 +1,21 @@
 $(document).on('turbolinks:load', function() {
-  $('.follow-stats span').on('click', function() {
-    var url = $(this).data('url');
+  // $('.follow-stats span').on('click', function() {
+  //   var url = $(this).data('url');
     
-    $.get(url, function(data) {
-      var filter_class = '';
+  //   $.get(url, function(data) {
+  //     var filter_class = '';
 
-      if (url.match('/followers')) {
-        filter_class = '.follower-list';
-      } else if (url.match('/following')) {
-        filter_class = '.following-list';
-      }
+  //     if (url.match('/followers')) {
+  //       filter_class = '.follower-list';
+  //     } else if (url.match('/following')) {
+  //       filter_class = '.following-list';
+  //     }
 
-      var html = $(data).filter(filter_class).html();
-      $('#modal').html(html);
-      $('#modal').remodal().open();
-    });
-  });
+  //     var html = $(data).filter(filter_class).html();
+  //     $('#modal').html(html);
+  //     $('#modal').remodal().open();
+  //   });
+  // });
 
   $('input[type="file"]').on('change', function(e) {
     var file = e.target.files[0];

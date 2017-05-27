@@ -1,10 +1,11 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.sign-in-header
+  = image_tag 'clonote_logo.svg'
+.sign-in-container
+  .sign-in-container__title
+    パスワード再設定
+  = form_for resource, as: resource_name, url: password_path(resource_name), html: { class: 'new-user-form' } do |f|
+    = devise_error_messages!
+    .input-field
+      = f.email_field :email, placeholder: "メールアドレス", autofocus: true
+    .input-actions
+      = f.submit "送信"
