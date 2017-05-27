@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
       return function(e) {
         var $preview_class = $('.note-container__header-image');
         
-        $preview_class.css('background-image', `url(${e.target.result})`);
+        $preview_class.css('background-image', 'url(' + e.target.result + ')');
       };
     })(file);
     
