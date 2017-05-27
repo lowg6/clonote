@@ -10,7 +10,7 @@
   .note-container
     %label.note-container__image-overlay
       = f.file_field :header_image, style: "display: none;"
-      .note-container__header-image
+      .note-container__header-image{ style: "background-image: url('#{note.header_image.url ? note.header_image : ''}')" }
         .fa.fa-picture-o.fa-2x
     .note-container__title
       = f.text_field :title, placeholder: 'ノートタイトル'
