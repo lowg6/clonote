@@ -10,7 +10,7 @@
         .magazine-content__title
           %p
             = magazine.title
-        .magazine-content__header-image{ style: "background-image: url('#{magazine.user.image.url ? magazine.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
+        .magazine-content__header-image{ style: "background-image: url('#{magazine.header_image.url ? magazine.header_image : 'https://s3-ap-northeast-1.amazonaws.com/mxi/uploads/user/default_wallpaper.png'}')" }
           .magazine-content__header-overlay
       .magazine-content__body
         = link_to magazine_path(magazine) do
