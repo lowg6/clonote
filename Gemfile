@@ -58,6 +58,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,7 +73,6 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
-gem 'dotenv-rails'
 gem 'remotipart'
 gem 'acts-as-taggable-on'
 gem 'jquery-ui-rails'
